@@ -1,0 +1,123 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Resources:
+  EC2Instance:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      ImageId: ami-0557a15b87f6559cf # Ubuntu 20.04 LTS 
+      InstanceType: t2.micro
+      KeyName: DigitalBookingEC2
+      NetworkInterfaces:
+        - AssociatePublicIpAddress: true
+          DeviceIndex: 0
+          SubnetId: 'subnet-06bebe20214e10459'
+          GroupSet: [!Ref EC2SecurityGroup]
+      UserData:
+        Fn::Base64: !Sub |
+          #!/bin/bash
+          yum update -y
+          yum install -y nginx
+          cat > /etc/nginx/conf.d/default.conf <<EOF
+          server {
+              listen 80;
+              listen [::]:80;
+              server_name _;
+              location / {
+                  proxy_pass http://127.0.0.1:8080;
+                  proxy_set_header Host $host;
+                  proxy_set_header X-Real-IP $remote_addr;
+                  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                  proxy_set_header X-Forwarded-Proto $scheme;
+              }
+          }
+          EOF
+          systemctl enable nginx
+          systemctl start nginx
+      Tags:
+        - Key: Name
+          Value: digital-booking-instance
+  EC2SecurityGroup:
+    Type: 'AWS::EC2::SecurityGroup'
+    Properties:
+      GroupDescription: 'Security group for the EC2 instance'
+      VpcId: 'vpc-0c1c333e68c4721ff'
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 443
+          ToPort: 443
+          CidrIp: 0.0.0.0/0
+  RDSInstance:
+    Type: 'AWS::RDS::DBInstance'
+    Properties:
+      DBInstanceIdentifier: digitalbookingdb
+      AllocatedStorage: '20'
+      DBInstanceClass: db.t2.micro
+      Engine: mariadb
+      EngineVersion: '10.6'
+      MasterUsername: admin
+      MasterUserPassword: password123
+      DBName: digitalbooking
+      BackupRetentionPeriod: 0 # Set backup retention period to 0 to disable backups
+      MultiAZ: false
+      DBSubnetGroupName: !Ref DBSubnetGroup
+      PubliclyAccessible: false
+      VPCSecurityGroups: [!Ref RDSSecurityGroup]
+  DBSubnetGroup:
+    Type: 'AWS::RDS::DBSubnetGroup'
+    Properties:
+      DBSubnetGroupName: digitalbookingdb-subnet-group
+      SubnetIds:
+        - 'subnet-06bebe20214e10459'
+        - 'subnet-05b40fd5a7493d19e'
+      DBSubnetGroupDescription: 'Subnet group for the RDS instance'
+  RDSSecurityGroup:
+    Type: 'AWS::EC2::SecurityGroup'
+    Properties:
+      GroupDescription: 'Security group for the RDS instance'
+      VpcId: 'vpc-0c1c333e68c4721ff'
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 3306
+          ToPort: 3306
+          SourceSecurityGroupId: !Ref EC2SecurityGroup
+  StaticWebsiteBucket:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      AccessControl: PublicRead
+      BucketName: digitalbooking-static-website
+      WebsiteConfiguration:
+        IndexDocument: index.html
+  StaticWebsiteBucketPolicy:
+    Type: 'AWS::S3::BucketPolicy'
+    Properties:
+      Bucket: !Ref StaticWebsiteBucket
+      PolicyDocument:
+        Statement:
+        - Sid: PublicReadGetObject
+          Effect: Allow
+          Principal: '*'
+          Action: 's3:GetObject'
+          Resource: 'arn:aws:s3:::digitalbooking-static-website/*'
+  ImageBucket:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      AccessControl: PublicRead
+      BucketName: digitalbooking-image-bucket
+  ImageBucketPolicy:
+    Type: 'AWS::S3::BucketPolicy'
+    Properties:
+      Bucket: !Ref ImageBucket
+      PolicyDocument:
+        Statement:
+          - Sid: PublicReadGetObject
+            Effect: Allow
+            Principal: '*'
+            Action: 's3:GetObject'
+            Resource: 'arn:aws:s3:::digitalbooking-image-bucket/*'

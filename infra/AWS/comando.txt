@@ -1,0 +1,1 @@
+ssh -i "DH2023E07.pem" ubuntu@ec2-18-188-163-166.us-east-2.compute.amazonaws.com

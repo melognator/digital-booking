@@ -1,0 +1,1920 @@
+{
+	"info": {
+		"_postman_id": "6dc44c33-c398-4d24-9b5f-fb1932101827",
+		"name": "ProyectoIntegradorTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Post",
+			"item": [
+				{
+					"name": "Post user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Your test name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.user.name).to.eql(\"Brian\");",
+									"    pm.expect(jsonData.user.lastname).to.eql(\"Rodriguez\")",
+									"    pm.expect(jsonData.user.email).to.eql(\"admin@gmail.com\")",
+									"});",
+									"",
+									"",
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"",
+									"const jsonData = pm.response.json();",
+									"const token = jsonData.token;",
+									"pm.environment.set(\"TOKEN\", token);",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Brian\",\r\n    \"lastname\": \"Rodriguez\",\r\n    \"email\": \"admin@gmail.com\",\r\n    \"password\": \"adCk@LMvUQ7iC^#riotMx9md#uA^QCiVFmm7uE@r%yndn9^QhbXX9aWMD%XM5TExrHgF5~hVaMyxjDjQA3UEErrS&D4Kun7L%5Ro#@zf5sds7Cdc\",\r\n    \"admin_secret\": \"adCk@LMvUQ7iC^#riotMx9md#uA^QCiVFmm7uE@r%yndn9^QhbXX9aWMD%XM5TExrHgF5~hVaMyxjDjQA3UEErrS&D4Kun7L%5Ro#@zf5sds7Cdc\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/user",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post category",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Json response data\", () => {",
+									"    const responseJson = pm.response.json();",
+									"    pm.expect(responseJson.title).to.eql(\"Deportivo\");",
+									"    pm.expect(responseJson.description).to.eql(\"12.538 autos\");",
+									"    pm.expect(responseJson.img).to.eql(pm.environment.get(\"IMG_URL\") + \"/category/deportivo.webp\");",
+									"})",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Deportivo\",\n    \"description\": \"12.538 autos\",\n    \"img\": \"{{IMG_URL}}/category/deportivo.webp\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/category",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post city",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Json response data\", () => {",
+									"    const responseJson = pm.response.json();",
+									"    pm.expect(responseJson.cityName).to.eql(\"Montevideo\");",
+									"    pm.expect(responseJson.region).to.eql(\"Montevideo\");",
+									"    pm.expect(responseJson.country).to.eql(\"Uruguay\");",
+									"})",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cityName\": \"Montevideo\",\n    \"region\": \"Montevideo\",\n    \"country\": \"Uruguay\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/city",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"city"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post feature",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Json response data\", () => {",
+									"    const responseJson = pm.response.json();",
+									"    pm.expect(responseJson.title).to.eql(\"Automático\");",
+									"    pm.expect(responseJson.acronym).to.eql(\"A\");",
+									"    pm.expect(responseJson.icon).to.eql(\"fa-solid fa-gauge-high\");",
+									"})",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Automático\",\r\n    \"acronym\": \"A\",\r\n    \"icon\": \"fa-solid fa-gauge-high\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/feature",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"feature"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post product",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test json response\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    var url = pm.environment.get(\"IMG_URL\");",
+									"    pm.expect(jsonData).to.eql({",
+									"    \"id\": 1,",
+									"    \"images\": [",
+									"        {",
+									"            \"id\": 1,",
+									"            \"title\": \"Prius amarillo\",",
+									"            \"url\": url + \"/products/Prius/1.webp\"",
+									"        },",
+									"        {",
+									"            \"id\": 2,",
+									"            \"title\": \"Prius amarillo\",",
+									"            \"url\": url + \"/products/Prius/2.webp\"",
+									"        },",
+									"        {",
+									"            \"id\": 3,",
+									"            \"title\": \"Prius amarillo\",",
+									"            \"url\": url + \"/products/Prius/3.webp\"",
+									"        },",
+									"        {",
+									"            \"id\": 4,",
+									"            \"title\": \"Prius amarillo\",",
+									"            \"url\": url + \"/products/Prius/4.webp\"",
+									"        },",
+									"        {",
+									"            \"id\": 5,",
+									"            \"title\": \"Prius amarillo\",",
+									"            \"url\": url + \"/products/Prius/5.webp\"",
+									"        }",
+									"    ],",
+									"    \"category\": \"Deportivo\",",
+									"    \"title\": \"Prius\",",
+									"    \"city\": {",
+									"        \"id\": 1,",
+									"        \"cityName\": \"Montevideo\",",
+									"        \"region\": \"Montevideo\",",
+									"        \"country\": \"Uruguay\"",
+									"    },",
+									"    \"location\": null,",
+									"    \"mapImage\": \"https://i.stack.imgur.com/HILmr.png\",",
+									"    \"description\": \"El Toyota Prius (Toyota Puriusu) es un automóvil híbrido gasolina-eléctrico del segmento C producido por el fabricante de automóviles japonés Toyota que se ha convertido en el más visible representante de los vehículos híbridos.\",",
+									"    \"descriptionTitle\": \"Conduce el auto de tus sueños\",",
+									"    \"globalRating\": 0.0,",
+									"    \"reservations\": [],",
+									"    \"features\": [",
+									"        {",
+									"            \"id\": 1,",
+									"            \"title\": \"Automático\",",
+									"            \"acronym\": \"A\",",
+									"            \"icon\": \"fa-solid fa-gauge-high\"",
+									"        }",
+									"    ],",
+									"    \"policy\": [",
+									"        {",
+									"            \"id\": 1,",
+									"            \"title\": \"Normas de la casa\",",
+									"            \"rules\": [",
+									"                \"Check out: 10:00\",",
+									"                \"No se permite comer dentro del coche\",",
+									"                \"No fumar dentro del coche\"",
+									"            ]",
+									"        },",
+									"        {",
+									"            \"id\": 2,",
+									"            \"title\": \"Salud y seguridad\",",
+									"            \"rules\": [",
+									"                \"Se aplican pautas de distanciamiento social y otras normas del coronaviru\",",
+									"                \"Detector de humo\",",
+									"                \"Depósito de seguridad\"",
+									"            ]",
+									"        },",
+									"        {",
+									"            \"id\": 3,",
+									"            \"title\": \"Política de cancelación\",",
+									"            \"rules\": [",
+									"                \"Agregá las fechas de tu alquiler para obtener los detalles de cancelación de esta reserva\"",
+									"            ]",
+									"        }",
+									"    ],",
+									"    \"reviews\": []",
+									"});",
+									"});",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"Prius\",\r\n    \"descriptionTitle\": \"Conduce el auto de tus sueños\",\r\n    \"description\":\"El Toyota Prius (Toyota Puriusu) es un automóvil híbrido gasolina-eléctrico del segmento C producido por el fabricante de automóviles japonés Toyota que se ha convertido en el más visible representante de los vehículos híbridos.\",\r\n    \"mapImage\": \"https://i.stack.imgur.com/HILmr.png\",\r\n    \"category\": \"Deportivo\",\r\n    \"city\": {\"cityName\": \"Montevideo\"},\r\n    \"images\": [\r\n        {\r\n            \"title\": \"Prius amarillo\",\r\n            \"url\": \"{{IMG_URL}}/products/Prius/1.webp\"\r\n        },\r\n        {\r\n            \"title\": \"Prius amarillo\",\r\n            \"url\": \"{{IMG_URL}}/products/Prius/2.webp\"\r\n        },\r\n        {\r\n            \"title\": \"Prius amarillo\",\r\n            \"url\": \"{{IMG_URL}}/products/Prius/3.webp\"\r\n        },\r\n        {\r\n            \"title\": \"Prius amarillo\",\r\n            \"url\": \"{{IMG_URL}}/products/Prius/4.webp\"\r\n        },\r\n        {\r\n            \"title\": \"Prius amarillo\",\r\n            \"url\": \"{{IMG_URL}}/products/Prius/5.webp\"\r\n        }\r\n    ],\r\n    \"features\": [\r\n        {\"title\": \"Automático\"}\r\n    ],\r\n    \"policy\":  [\r\n        {\r\n            \"title\": \"Normas de la casa\",\r\n            \"rules\": [ \r\n                \"Check out: 10:00\",\r\n                \"No se permite comer dentro del coche\",\r\n                \"No fumar dentro del coche\"\r\n            ]\r\n        },\r\n        {\r\n            \"title\": \"Salud y seguridad\",\r\n            \"rules\": [\r\n                \"Se aplican pautas de distanciamiento social y otras normas del coronaviru\",\r\n                \"Detector de humo\",\r\n                \"Depósito de seguridad\"\r\n            ]\r\n        },\r\n        {\r\n            \"title\": \"Política de cancelación\",\r\n            \"rules\": [\r\n                \"Agregá las fechas de tu alquiler para obtener los detalles de cancelación de esta reserva\"\r\n            ]\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/product",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post product 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test json response\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    var url = pm.environment.get(\"IMG_URL\");",
+									"    pm.expect(jsonData).to.eql({",
+									"    \"id\": 2,",
+									"    \"images\": [",
+									"        {",
+									"            \"id\": 6,",
+									"            \"title\": \"Kwid\",",
+									"            \"url\": url + \"/products/Kwid/1.webp\"",
+									"        },",
+									"        {",
+									"            \"id\": 7,",
+									"            \"title\": \"Kwid\",",
+									"            \"url\": url + \"/products/Kwid/2.webp\"",
+									"        },",
+									"        {",
+									"            \"id\": 8,",
+									"            \"title\": \"Kwid\",",
+									"            \"url\": url + \"/products/Kwid/3.webp\"",
+									"        },",
+									"        {",
+									"            \"id\": 9,",
+									"            \"title\": \"Kwid\",",
+									"            \"url\": url + \"/products/Kwid/4.webp\"",
+									"        },",
+									"        {",
+									"            \"id\": 10,",
+									"            \"title\": \"Kwid\",",
+									"            \"url\": url + \"/products/Kwid/5.webp\"",
+									"        }",
+									"    ],",
+									"    \"category\": \"Deportivo\",",
+									"    \"title\": \"Kwid\",",
+									"    \"city\": {",
+									"        \"id\": 1,",
+									"        \"cityName\": \"Montevideo\",",
+									"        \"region\": \"Montevideo\",",
+									"        \"country\": \"Uruguay\"",
+									"    },",
+									"    \"location\": null,",
+									"    \"mapImage\": \"https://i.stack.imgur.com/HILmr.png\",",
+									"    \"description\": \"El Renault Kwid es un automóvil de turismo del segmento A, producido por el fabricante francés Renault en alianza con Nissan tanto en su planta de Chennai, India como en la de São José dos Pinhais, Brasil. Lanzado como prototipo en el salón del automóvil de Nueva Delhi en 2014 y anunciándose para su producción en mayo de 2015.\",",
+									"    \"descriptionTitle\": \"Conduce el auto de tus sueños\",",
+									"    \"globalRating\": 0.0,",
+									"    \"reservations\": [],",
+									"    \"features\": null,",
+									"    \"policy\": [",
+									"        {",
+									"            \"id\": 4,",
+									"            \"title\": \"Normas de la casa\",",
+									"            \"rules\": [",
+									"                \"Check out: 10:00\",",
+									"                \"No se permite comer dentro del coche\",",
+									"                \"No fumar dentro del coche\"",
+									"            ]",
+									"        },",
+									"        {",
+									"            \"id\": 5,",
+									"            \"title\": \"Salud y seguridad\",",
+									"            \"rules\": [",
+									"                \"Se aplican pautas de distanciamiento social y otras normas del coronaviru\",",
+									"                \"Detector de humo\",",
+									"                \"Depósito de seguridad\"",
+									"            ]",
+									"        },",
+									"        {",
+									"            \"id\": 6,",
+									"            \"title\": \"Política de cancelación\",",
+									"            \"rules\": [",
+									"                \"Agregá las fechas de tu alquiler para obtener los detalles de cancelación de esta reserva\"",
+									"            ]",
+									"        }",
+									"    ],",
+									"    \"reviews\": []",
+									"});",
+									"});",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\":\"Kwid\",\n    \"descriptionTitle\": \"Conduce el auto de tus sueños\",\n    \"description\":\"El Renault Kwid es un automóvil de turismo del segmento A, producido por el fabricante francés Renault en alianza con Nissan tanto en su planta de Chennai, India como en la de São José dos Pinhais, Brasil. Lanzado como prototipo en el salón del automóvil de Nueva Delhi en 2014 y anunciándose para su producción en mayo de 2015.\",\n    \"mapImage\": \"https://i.stack.imgur.com/HILmr.png\",\n    \"category\": \"Deportivo\",\n    \"city\": {\"cityName\": \"Montevideo\"},\n    \"images\": [\n        {\n            \"title\": \"Kwid\",\n            \"url\": \"{{IMG_URL}}/products/Kwid/1.webp\"\n        },\n        {\n            \"title\": \"Kwid\",\n            \"url\": \"{{IMG_URL}}/products/Kwid/2.webp\"\n        },\n        {\n            \"title\": \"Kwid\",\n            \"url\": \"{{IMG_URL}}/products/Kwid/3.webp\"\n        },\n        {\n            \"title\": \"Kwid\",\n            \"url\": \"{{IMG_URL}}/products/Kwid/4.webp\"\n        },\n        {\n            \"title\": \"Kwid\",\n            \"url\": \"{{IMG_URL}}/products/Kwid/5.webp\"\n        }\n    ],\n    \"policy\":  [\n        {\n            \"title\": \"Normas de la casa\",\n            \"rules\": [ \n                \"Check out: 10:00\",\n                \"No se permite comer dentro del coche\",\n                \"No fumar dentro del coche\"\n            ]\n        },\n        {\n            \"title\": \"Salud y seguridad\",\n            \"rules\": [\n                \"Se aplican pautas de distanciamiento social y otras normas del coronaviru\",\n                \"Detector de humo\",\n                \"Depósito de seguridad\"\n            ]\n        },\n        {\n            \"title\": \"Política de cancelación\",\n            \"rules\": [\n                \"Agregá las fechas de tu alquiler para obtener los detalles de cancelación de esta reserva\"\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/product",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post reservation",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Json response data\", () => {",
+									"    const responseJson = pm.response.json();",
+									"    pm.expect(responseJson.hourStartReservation).to.eql(\"15:19:47\");",
+									"    pm.expect(responseJson.startReservation).to.eql(\"2024-01-13\");",
+									"    pm.expect(responseJson.endReservation).to.eql(\"2024-01-14\");",
+									"})",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"hourStartReservation\":\"15:19:47\",\n    \"startReservation\": \"2024-01-13\",\n    \"endReservation\": \"2024-01-14\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/product/1/reservation",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"product",
+								"1",
+								"reservation"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get",
+			"item": [
+				{
+					"name": "User",
+					"item": [
+						{
+							"name": "Get users",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Json response data\", () => {",
+											"    const responseJson = pm.response.json();",
+											"    pm.expect(responseJson.length).to.eql(1);",
+											"})",
+											"",
+											"",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/user",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User my",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/user/my",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"user",
+										"my"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User by id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Json response data\", () => {",
+											"    const responseJson = pm.response.json();",
+											"    pm.expect(responseJson.id).to.eql(1);",
+											"})",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/user/1",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"user",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "City",
+					"item": [
+						{
+							"name": "Get cities",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Json response data\", () => {",
+											"    const responseJson = pm.response.json();",
+											"    pm.expect(responseJson.length).to.eql(1);",
+											"})",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/city",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"city"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "City by id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Json response data\", () => {",
+											"    const responseJson = pm.response.json();",
+											"    pm.expect(responseJson.cityName).to.eql(\"Montevideo\");",
+											"})",
+											"",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/city/1",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"city",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Feature",
+					"item": [
+						{
+							"name": "Get features",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Json response data\", () => {",
+											"    const responseJson = pm.response.json();",
+											"    pm.expect(responseJson.length).to.eql(1);",
+											"})",
+											"",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/feature",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"feature"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Feature by id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Json response data\", () => {",
+											"    const responseJson = pm.response.json();",
+											"    pm.expect(responseJson.id).to.eql(1);",
+											"})",
+											"",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/feature/1",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"feature",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Product",
+					"item": [
+						{
+							"name": "Get products",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Json response data\", () => {",
+											"    const responseJson = pm.response.json();",
+											"    pm.expect(responseJson.length).to.eql(2);",
+											"})",
+											"",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/product",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"product"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Produt by id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Json response data\", () => {",
+											"    const responseJson = pm.response.json();",
+											"    pm.expect(responseJson.id).to.eql(1);",
+											"})",
+											"",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/product/1",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"product",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Product by ids",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Json response data\", () => {",
+											"    const responseJson = pm.response.json();",
+											"    pm.expect(responseJson.length).to.eql(2);",
+											"})",
+											"",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/product/ids?ids=1,2",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"product",
+										"ids"
+									],
+									"query": [
+										{
+											"key": "ids",
+											"value": "1,2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Product filter",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Json response data\", () => {",
+											"    const responseJson = pm.response.json();",
+											"    pm.expect(responseJson.length).to.eql(1);",
+											"})",
+											"",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/product/filter?featureIds=1&category=Deportivo&city=Montevideo&startDate=2025-05-12&finishDate=2025-05-13",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"product",
+										"filter"
+									],
+									"query": [
+										{
+											"key": "featureIds",
+											"value": "1"
+										},
+										{
+											"key": "category",
+											"value": "Deportivo"
+										},
+										{
+											"key": "city",
+											"value": "Montevideo"
+										},
+										{
+											"key": "startDate",
+											"value": "2025-05-12"
+										},
+										{
+											"key": "finishDate",
+											"value": "2025-05-13"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Products random",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Json response data\", () => {",
+											"    const responseJson = pm.response.json();",
+											"    pm.expect(responseJson.length).to.eql(2);",
+											"})",
+											"",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/product/random",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"product",
+										"random"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Reservation",
+					"item": [
+						{
+							"name": "Get reservations",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Json response data\", () => {",
+											"    const responseJson = pm.response.json();",
+											"    pm.expect(responseJson.length).to.eql(1);",
+											"})",
+											"",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/reservation",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"reservation"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get reservation by id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Json response data\", () => {",
+											"    const responseJson = pm.response.json();",
+											"    pm.expect(responseJson.id).to.eql(1);",
+											"})",
+											"",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/product/1/reservation/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"product",
+										"1",
+										"reservation",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get reservation by product",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Json response data\", () => {",
+											"    const responseJson = pm.response.json();",
+											"    pm.expect(responseJson.length).to.eql(1);",
+											"})",
+											"",
+											"",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/product/1/reservation",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"product",
+										"1",
+										"reservation"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get reservation of user",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Json response data\", () => {",
+											"    const responseJson = pm.response.json();",
+											"    pm.expect(responseJson.length).to.eql(1);",
+											"})",
+											"",
+											"",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/user/bookings",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"user",
+										"bookings"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get reservation by userId",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Json response data\", () => {",
+											"    const responseJson = pm.response.json();",
+											"    pm.expect(responseJson.length).to.eql(1);",
+											"})",
+											"",
+											"",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/user/1/bookings",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"user",
+										"1",
+										"bookings"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{TOKEN}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Put",
+			"item": [
+				{
+					"name": "Put user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"name\": \"Brian\",\n    \"lastname\": \"Rodriguez\",\n    \"email\": \"admin@gmail.com\",\n    \"city\": null,\n    \"profileUrl\": null,\n    \"role\": \"ROLE_ADMIN\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/user",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put city",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"cityName\": \"Montevideo\",\n    \"region\": \"Montevideo2\",\n    \"country\": \"Uruguay\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/city",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"city"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put category",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\" : 1,\n    \"title\": \"Deportivo\",\n    \"description\": \"1.538 autos\",\n    \"img\": \"{{IMG_URL}}/category/deportivo.webp\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/category",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put feature",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\" : 1,\n    \"title\": \"Automático\",\n    \"acronym\": \"At\",\n    \"icon\": \"fa-solid fa-gauge-high\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/feature",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"feature"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put product",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"title\":\"Prius\",\n    \"descriptionTitle\": \"Conduce el auto\",\n    \"description\":\"El Toyota Prius (Toyota Puriusu) es un automóvil híbrido gasolina-eléctrico del segmento C producido por el fabricante de automóviles japonés Toyota que se ha convertido en el más visible representante de los vehículos híbridos.\",\n    \"mapImage\": \"https://i.stack.imgur.com/HILmr.png\",\n    \"category\": \"Deportivo\",\n    \"city\": {\"cityName\": \"Montevideo\"},\n    \"images\": [\n        {\n            \"title\": \"Prius amarillo\",\n            \"url\": \"{{IMG_URL}}/products/Prius/1.webp\"\n        },\n        {\n            \"title\": \"Prius amarillo\",\n            \"url\": \"{{IMG_URL}}/products/Prius/2.webp\"\n        },\n        {\n            \"title\": \"Prius amarillo\",\n            \"url\": \"{{IMG_URL}}/products/Prius/3.webp\"\n        },\n        {\n            \"title\": \"Prius amarillo\",\n            \"url\": \"{{IMG_URL}}/products/Prius/4.webp\"\n        },\n        {\n            \"title\": \"Prius amarillo\",\n            \"url\": \"{{IMG_URL}}/products/Prius/5.webp\"\n        }\n    ],\n    \"features\": [\n        {\"title\": \"Automático\"},\n        {\"title\": \"Aire acondicionado\"},\n        {\"title\": \"5 asientos\"},\n        {\"title\": \"5 puertas\"},\n        {\"title\": \"2 maletas\"}\n    ],\n    \"policy\":  [\n        {\n            \"title\": \"Normas de la casa\",\n            \"rules\": [ \n                \"Check out: 10:00\",\n                \"No se permite comer dentro del coche\",\n                \"No fumar dentro del coche\"\n            ]\n        },\n        {\n            \"title\": \"Salud y seguridad\",\n            \"rules\": [\n                \"Se aplican pautas de distanciamiento social y otras normas del coronaviru\",\n                \"Detector de humo\",\n                \"Depósito de seguridad\"\n            ]\n        },\n        {\n            \"title\": \"Política de cancelación\",\n            \"rules\": [\n                \"Agregá las fechas de tu alquiler para obtener los detalles de cancelación de esta reserva\"\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/product",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put reservation",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"hourStartReservation\":\"15:19:47\",\n    \"startReservation\": \"2024-01-13\",\n    \"endReservation\": \"2050-01-14\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/product/1/reservation",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"product",
+								"1",
+								"reservation"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{TOKEN}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Delete",
+			"item": [
+				{
+					"name": "Delete reservation",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/product/1/reservation/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"product",
+								"1",
+								"reservation",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete product",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/product/1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"product",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete category",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/category/1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"category",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete city",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/city/1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"city",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete feature",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/feature/1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"feature",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/user/1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{TOKEN}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

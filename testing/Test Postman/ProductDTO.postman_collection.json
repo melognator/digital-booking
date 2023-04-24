@@ -1,0 +1,647 @@
+{
+	"info": {
+		"_postman_id": "28751ba4-cc2e-4547-b875-c5589926e148",
+		"name": "ProductDTO",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/category",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"title\": \"titulo c\",\n        \"description\": \"descripcion categoria\",\n        \"img\": \"imagen categoria\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/category",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"category"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/category",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"title\": \"titulo\",\n        \"description\": \"descripcion categoria\",\n        \"img\": \"imagen categoria\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/category",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"category"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/city",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Json response data\", () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson.cityName).to.eql(\"nombre ciudad\");",
+							"    pm.expect(responseJson.region).to.eql(\"region ciudad\");",
+							"    pm.expect(responseJson.country).to.eql(\"pais\");",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"cityName\": \"nombre ciudad\",\n        \"region\": \"region ciudad\",\n        \"country\": \"pais\"\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/city",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"city"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/city",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Json response data\", () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson.cityName).to.eql(\"ciudad\");",
+							"    pm.expect(responseJson.region).to.eql(\"region ciudad\");",
+							"    pm.expect(responseJson.country).to.eql(\"pais\");",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"cityName\": \"ciudad\",\n        \"region\": \"region ciudad\",\n        \"country\": \"pais\"\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/city",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"city"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Json response data\", () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson.images[0].title).to.eql(\"titulo imagen\");",
+							"    pm.expect(responseJson.images[1].url).to.eql(\"direccion imagen\");",
+							"    pm.expect(responseJson.title).to.eql(\"titulo product\");",
+							"    pm.expect(responseJson.location).to.eql(\"nombre ciudad\");",
+							"    pm.expect(responseJson.mapImage).to.eql(\"mapImage\");",
+							"    pm.expect(responseJson.description).to.eql(\"descripcion\");",
+							"    pm.expect(responseJson.descriptionTitle).to.eql(\"descriptionTitle\");",
+							"    pm.expect(responseJson.features[0].nameFeature).to.eql(\"nombre caracteristica\");",
+							"    pm.expect(responseJson.features[1].icon).to.eql(\"icono caracteristica\");",
+							"    pm.expect(responseJson.policy[0].title).to.eql(\"titulo politicas\");",
+							"",
+							"",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"images\":[{\n        \"title\": \"titulo imagen\",\n        \"url\": \"direccion imagen\"\n    },\n    {\n        \"title\": \"titulo imagen\",\n        \"url\": \"direccion imagen\"\n    }],\n    \"category\": \"titulo c\",\n    \"title\": \"titulo product\",\n    \"location\": \"nombre ciudad\",\n    \"mapImage\": \"mapImage\",\n    \"descriptionTitle\": \"descriptionTitle\",\n    \"description\": \"descripcion\",\n    \"features\":[{\n        \"nameFeature\": \"nombre caracteristica\",\n        \"icon\": \"icono caracteristica\"\n    },{\n        \"nameFeature\": \"nombre caracteristica2.0\",\n        \"icon\": \"icono caracteristica\"\n    }],    \n    \"policy\": [{\n        \"title\": \"titulo politicas\",\n        \"rules\": [\"regla 1\", \"regla 2\"]\n    }]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/product",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Json response data\", () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson.images[0].title).to.eql(\"titulo imagen\");",
+							"    pm.expect(responseJson.images[1].url).to.eql(\"direccion imagen\");",
+							"    pm.expect(responseJson.title).to.eql(\"titulo product\");",
+							"    pm.expect(responseJson.location).to.eql(\"ciudad\");",
+							"    pm.expect(responseJson.mapImage).to.eql(\"mapImage\");",
+							"    pm.expect(responseJson.description).to.eql(\"descripcion\");",
+							"    pm.expect(responseJson.descriptionTitle).to.eql(\"descriptionTitle\");",
+							"    pm.expect(responseJson.features[0].nameFeature).to.eql(\"nombre caracteristica\");",
+							"    pm.expect(responseJson.features[1].icon).to.eql(\"icono caracteristica\");",
+							"    pm.expect(responseJson.policy[0].title).to.eql(\"titulo politicas\");",
+							"    pm.expect(responseJson.category).to.eql(\"titulo\")",
+							"",
+							"})",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"images\":[{\n        \"title\": \"titulo imagen\",\n        \"url\": \"direccion imagen\"\n    },\n    {\n        \"title\": \"titulo imagen\",\n        \"url\": \"direccion imagen\"\n    }],\n    \"category\": \"titulo\",\n    \"title\": \"titulo product\",\n    \"location\": \"ciudad\",\n    \"mapImage\": \"mapImage\",\n    \"descriptionTitle\": \"descriptionTitle\",\n    \"description\": \"descripcion\",\n    \"features\":[{\n        \"nameFeature\": \"nombre caracteristica\",\n        \"icon\": \"icono caracteristica\"\n    },{\n        \"nameFeature\": \"nombre caracteristica2.0\",\n        \"icon\": \"icono caracteristica\"\n    }],    \n    \"policy\": [{\n        \"title\": \"titulo politicas\",\n        \"rules\": [\"regla 1\", \"regla 2\"]\n    }]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/product",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/reservation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Json response data\", () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson.taken).to.contain('2023-03-05T00:00:00.000+00:00');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"product_id\": 1,\n    \"user_id\": 1,\n    \"taken\": [\"2023-03-05\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/reservation",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reservation"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/review",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Json response data\", () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson.rating).to.eql(4);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user_id\": 1,\n    \"product_id\": 1,\n    \"rating\": 4\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/review",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"review"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Product titulo product2 has been updated\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 1,\n    \"images\": [\n        {\n            \"id\": 1,\n            \"title\": \"titulo imagen2\",\n            \"url\": \"direccion imagen\"\n        },\n        {\n            \"id\": 2,\n            \"title\": \"titulo imagen2\",\n            \"url\": \"direccion imagen\"\n        }\n    ],\n    \"category\": \"titulo c\",\n    \"title\": \"titulo product2\",\n    \"location\": \"nombre ciudad\",\n    \"mapImage\": \"mapImage2\",\n    \"description\": \"decripcion2\",\n    \"descriptionTitle\": \"descriptionTitle2\",\n    \"features\": [\n        {\n            \"id\": 1,\n            \"nameFeature\": \"nombre caracteristica2\",\n            \"icon\": \"icono caracteristica\"\n        },\n        {\n            \"id\": 2,\n            \"nameFeature\": \"nombre caracteristica2.02\",\n            \"icon\": \"icono caracteristica\"\n        }\n    ],\n    \"policy\": [\n        {\n            \"id\": 1,\n            \"title\": \"titulo politicas2\",\n            \"rules\": [\n                \"regla 12\",\n                \"regla 22\"\n            ]\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/product",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/product",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/product/1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Json response data\", () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson.id).to.eql(1);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/product/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"product",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/product/byCity/ciudad",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Json response data\", () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson[0].location).to.eql(\"ciudad\");",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/product/byCity/ciudad",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"product",
+						"byCity",
+						"ciudad"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/product/byCategory/titulo c",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Json response data\", () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson[0].category).to.eql(\"titulo c\");",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/product/byCategory/titulo c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"product",
+						"byCategory",
+						"titulo c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/product/random",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/product/random",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"product",
+						"random"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/product/1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Product titulo product2 has been eliminated\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/product/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"product",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.test(\"Status code is 200\", function () {",
+					"    pm.response.to.have.status(200);",
+					"});"
+				]
+			}
+		}
+	]
+}

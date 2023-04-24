@@ -1,0 +1,3604 @@
+{
+	"info": {
+		"_postman_id": "2555af96-adab-4a05-986d-d0fc5cb2fc43",
+		"name": "Proyecto Integrador POSTs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26189418"
+	},
+	"item": [
+		{
+			"name": "User POST",
+			"item": [
+				{
+					"name": "User1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Your test name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.user.name).to.eql(\"Brian\");",
+									"    pm.expect(jsonData.user.lastname).to.eql(\"Rodriguez\")",
+									"    pm.expect(jsonData.user.email).to.eql(\"prueba@gmail.com\")",
+									"});",
+									"",
+									"",
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"",
+									"const jsonData = pm.response.json();",
+									"const token = jsonData.access_token;",
+									"pm.environment.set(\"token\", token);",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Brian\",\r\n    \"lastname\": \"Rodriguez\",\r\n    \"email\": \"prueba@gmail.com\",\r\n    \"password\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/user",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "City POST",
+			"item": [
+				{
+					"name": "Montevideo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Json response data\", () => {\r",
+									"    const responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson.cityName).to.eql(\"Montevideo\");\r",
+									"    pm.expect(responseJson.region).to.eql(\"Montevideo\");\r",
+									"    pm.expect(responseJson.country).to.eql(\"Uruguay\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cityName\": \"Montevideo\",\r\n    \"region\": \"Montevideo\",\r\n    \"country\": \"Uruguay\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/city",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"city"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Punta del Este",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Json response data\", () => {",
+									"    const responseJson = pm.response.json();",
+									"    pm.expect(responseJson.cityName).to.eql(\"Punta del Este\");",
+									"    pm.expect(responseJson.region).to.eql(\"Maldonado\");",
+									"    pm.expect(responseJson.country).to.eql(\"Uruguay\");",
+									"})",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cityName\": \"Punta del Este\",\r\n    \"region\": \"Maldonado\",\r\n    \"country\": \"Uruguay\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/city",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"city"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Minas",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Json response data\", () => {",
+									"    const responseJson = pm.response.json();",
+									"    pm.expect(responseJson.cityName).to.eql(\"Minas\");",
+									"    pm.expect(responseJson.region).to.eql(\"Lavalleja\");",
+									"    pm.expect(responseJson.country).to.eql(\"Uruguay\");",
+									"})",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cityName\": \"Minas\",\r\n    \"region\": \"Lavalleja\",\r\n    \"country\": \"Uruguay\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/city",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"city"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buenos Aires",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Json response data\", () => {",
+									"    const responseJson = pm.response.json();",
+									"    pm.expect(responseJson.cityName).to.eql(\"Buenos Aires\");",
+									"    pm.expect(responseJson.region).to.eql(\"Buenos Aires\");",
+									"    pm.expect(responseJson.country).to.eql(\"Argentina\");",
+									"})",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cityName\": \"Buenos Aires\",\r\n    \"region\": \"Buenos Aires\",\r\n    \"country\": \"Argentina\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/city",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"city"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Córdoba",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Json response data\", () => {",
+									"    const responseJson = pm.response.json();",
+									"    pm.expect(responseJson.cityName).to.eql(\"Córdoba\");",
+									"    pm.expect(responseJson.region).to.eql(\"Córdoba\");",
+									"    pm.expect(responseJson.country).to.eql(\"Argentina\");",
+									"})",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cityName\": \"Córdoba\",\r\n    \"region\": \"Córdoba\",\r\n    \"country\": \"Argentina\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/city",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"city"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mendoza",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Json response data\", () => {",
+									"    const responseJson = pm.response.json();",
+									"    pm.expect(responseJson.cityName).to.eql(\"Mendoza\");",
+									"    pm.expect(responseJson.region).to.eql(\"Mendoza\");",
+									"    pm.expect(responseJson.country).to.eql(\"Argentina\");",
+									"})",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cityName\": \"Mendoza\",\r\n    \"region\": \"Mendoza\",\r\n    \"country\": \"Argentina\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/city",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"city"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Category POST",
+			"item": [
+				{
+					"name": "Categoria Deportivo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Json response data\", () => {",
+									"    const responseJson = pm.response.json();",
+									"    pm.expect(responseJson.title).to.eql(\"Deportivo\");",
+									"    pm.expect(responseJson.description).to.eql(\"12.538 autos\");",
+									"    pm.expect(responseJson.img).to.eql(\"https://toyotaassets.scene7.com/is/image/toyota/Prius_68x538_TYCK2067000H?fmt=jpeg&fit=crop&wid=767\");",
+									"})",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Deportivo\",\n    \"description\": \"12.538 autos\",\n    \"img\": \"https://toyotaassets.scene7.com/is/image/toyota/Prius_68x538_TYCK2067000H?fmt=jpeg&fit=crop&wid=767\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/category",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Categoria Económico",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Json response data\", () => {",
+									"    const responseJson = pm.response.json();",
+									"    pm.expect(responseJson.title).to.eql(\"Económico\");",
+									"    pm.expect(responseJson.description).to.eql(\"5.230 autos\");",
+									"    pm.expect(responseJson.img).to.eql(\"https://cdn.motor1.com/images/mgl/Y1B1q/s1/adios-al-kwid-por-restricciones-a-las-importaciones-renault-deja-de-vender-su-auto-mas-barato-en-argentina.webp\");",
+									"})",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Económico\",\n    \"description\": \"5.230 autos\",\n    \"img\": \"https://cdn.motor1.com/images/mgl/Y1B1q/s1/adios-al-kwid-por-restricciones-a-las-importaciones-renault-deja-de-vender-su-auto-mas-barato-en-argentina.webp\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/category",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Categoria Todoterreno",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Json response data\", () => {",
+									"    const responseJson = pm.response.json();",
+									"    pm.expect(responseJson.title).to.eql(\"Todoterreno\");",
+									"    pm.expect(responseJson.description).to.eql(\"9.312 autos\");",
+									"    pm.expect(responseJson.img).to.eql(\"https://www.mitsubishi-motors.com.uy/Images/PageImages/Slider/new-l200-renace-la-leyenda-mobile.jpg\");",
+									"})",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Todoterreno\",\n    \"description\": \"9.312 autos\",\n    \"img\": \"https://www.mitsubishi-motors.com.uy/Images/PageImages/Slider/new-l200-renace-la-leyenda-mobile.jpg\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/category",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Categoria De lujo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Json response data\", () => {",
+									"    const responseJson = pm.response.json();",
+									"    pm.expect(responseJson.title).to.eql(\"De lujo\");",
+									"    pm.expect(responseJson.description).to.eql(\"2.402 autos\");",
+									"    pm.expect(responseJson.img).to.eql(\"https://motor.elpais.com/wp-content/uploads/2022/09/2023-Mercedes-AMG-C-63-S-E-PERFORMANCE-00001.jpg\");",
+									"})",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"De lujo\",\n    \"description\": \"2.402 autos\",\n    \"img\": \"https://motor.elpais.com/wp-content/uploads/2022/09/2023-Mercedes-AMG-C-63-S-E-PERFORMANCE-00001.jpg\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/category",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"category"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Feature POST",
+			"item": [
+				{
+					"name": "Automático",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Json response data\", () => {",
+									"    const responseJson = pm.response.json();",
+									"    pm.expect(responseJson.title).to.eql(\"Automático\");",
+									"    pm.expect(responseJson.acronym).to.eql(\"A\");",
+									"    pm.expect(responseJson.icon).to.eql(\"fa-solid fa-gauge-high\");",
+									"})",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Automático\",\r\n    \"acronym\": \"A\",\r\n    \"icon\": \"fa-solid fa-gauge-high\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/feature",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"feature"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Manual",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Json response data\", () => {",
+									"    const responseJson = pm.response.json();",
+									"    pm.expect(responseJson.title).to.eql(\"Manual\");",
+									"    pm.expect(responseJson.acronym).to.eql(\"M\");",
+									"    pm.expect(responseJson.icon).to.eql(\"fa-solid fa-gauge\");",
+									"})",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Manual\",\r\n    \"acronym\": \"M\",\r\n    \"icon\": \"fa-solid fa-gauge\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/feature",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"feature"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Aire Acondicionado",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Json response data\", () => {",
+									"    const responseJson = pm.response.json();",
+									"    pm.expect(responseJson.title).to.eql(\"Aire acondicionado\");",
+									"    pm.expect(responseJson.acronym).to.eql(\"A/C\");",
+									"    pm.expect(responseJson.icon).to.eql(\"fa-regular fa-snowflake\");",
+									"})",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Aire acondicionado\",\r\n    \"acronym\": \"A/C\",\r\n    \"icon\": \"fa-regular fa-snowflake\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/feature",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"feature"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Electrico",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Json response data\", () => {",
+									"    const responseJson = pm.response.json();",
+									"    pm.expect(responseJson.title).to.eql(\"Eléctrico\");",
+									"    pm.expect(responseJson.acronym).to.eql(\"E\");",
+									"    pm.expect(responseJson.icon).to.eql(\"fa-solid fa-charging-station\");",
+									"})",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Eléctrico\",\r\n    \"acronym\": \"E\",\r\n    \"icon\": \"fa-solid fa-charging-station\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/feature",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"feature"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2 asientos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Json response data\", () => {",
+									"    const responseJson = pm.response.json();",
+									"    pm.expect(responseJson.title).to.eql(\"2 asientos\");",
+									"    pm.expect(responseJson.acronym).to.eql(\"2\");",
+									"    pm.expect(responseJson.icon).to.eql(\"fa-solid fa-chair\");",
+									"})",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"2 asientos\",\r\n    \"acronym\": \"2\",\r\n    \"icon\": \"fa-solid fa-chair\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/feature",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"feature"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4 asientos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Json response data\", () => {",
+									"    const responseJson = pm.response.json();",
+									"    pm.expect(responseJson.title).to.eql(\"4 asientos\");",
+									"    pm.expect(responseJson.acronym).to.eql(\"4\");",
+									"    pm.expect(responseJson.icon).to.eql(\"fa-solid fa-chair\");",
+									"})",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"4 asientos\",\r\n    \"acronym\": \"4\",\r\n    \"icon\": \"fa-solid fa-chair\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/feature",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"feature"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "5 asientos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Json response data\", () => {",
+									"    const responseJson = pm.response.json();",
+									"    pm.expect(responseJson.title).to.eql(\"5 asientos\");",
+									"    pm.expect(responseJson.acronym).to.eql(\"5\");",
+									"    pm.expect(responseJson.icon).to.eql(\"fa-solid fa-chair\");",
+									"})",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"5 asientos\",\r\n    \"acronym\": \"5\",\r\n    \"icon\": \"fa-solid fa-chair\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/feature",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"feature"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3 puertas",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Json response data\", () => {",
+									"    const responseJson = pm.response.json();",
+									"    pm.expect(responseJson.title).to.eql(\"3 puertas\");",
+									"    pm.expect(responseJson.acronym).to.eql(\"3\");",
+									"    pm.expect(responseJson.icon).to.eql(\"fa-solid fa-door-open\");",
+									"})",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"3 puertas\",\r\n    \"acronym\": \"3\",\r\n    \"icon\": \"fa-solid fa-door-open\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/feature",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"feature"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4 puertas",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Json response data\", () => {",
+									"    const responseJson = pm.response.json();",
+									"    pm.expect(responseJson.title).to.eql(\"4 puertas\");",
+									"    pm.expect(responseJson.acronym).to.eql(\"4\");",
+									"    pm.expect(responseJson.icon).to.eql(\"fa-solid fa-door-open\");",
+									"})",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"4 puertas\",\r\n    \"acronym\": \"4\",\r\n    \"icon\": \"fa-solid fa-door-open\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/feature",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"feature"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "5 puertas",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Json response data\", () => {",
+									"    const responseJson = pm.response.json();",
+									"    pm.expect(responseJson.title).to.eql(\"5 puertas\");",
+									"    pm.expect(responseJson.acronym).to.eql(\"5\");",
+									"    pm.expect(responseJson.icon).to.eql(\"fa-solid fa-door-open\");",
+									"})",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"5 puertas\",\r\n    \"acronym\": \"5\",\r\n    \"icon\": \"fa-solid fa-door-open\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/feature",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"feature"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "1 maleta",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Json response data\", () => {",
+									"    const responseJson = pm.response.json();",
+									"    pm.expect(responseJson.title).to.eql(\"1 maleta\");",
+									"    pm.expect(responseJson.acronym).to.eql(\"1\");",
+									"    pm.expect(responseJson.icon).to.eql(\"fa-solid fa-suitcase\");",
+									"})",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"1 maleta\",\r\n    \"acronym\": \"1\",\r\n    \"icon\": \"fa-solid fa-suitcase\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/feature",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"feature"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2 maletas",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Json response data\", () => {",
+									"    const responseJson = pm.response.json();",
+									"    pm.expect(responseJson.title).to.eql(\"2 maletas\");",
+									"    pm.expect(responseJson.acronym).to.eql(\"2\");",
+									"    pm.expect(responseJson.icon).to.eql(\"fa-solid fa-suitcase\");",
+									"})",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"2 maletas\",\r\n    \"acronym\": \"2\",\r\n    \"icon\": \"fa-solid fa-suitcase\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/feature",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"feature"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product POST",
+			"item": [
+				{
+					"name": "Prius",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test json response\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.eql({",
+									"    \"id\": 1,",
+									"    \"images\": [",
+									"        {",
+									"            \"id\": 1,",
+									"            \"title\": \"Prius amarillo\",",
+									"            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_977285-MLU53368788792_012023-F.webp\"",
+									"        },",
+									"        {",
+									"            \"id\": 2,",
+									"            \"title\": \"Prius amarillo\",",
+									"            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_785966-MLU53368847549_012023-F.webp\"",
+									"        },",
+									"        {",
+									"            \"id\": 3,",
+									"            \"title\": \"Prius amarillo\",",
+									"            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_616465-MLU53368934026_012023-F.webp\"",
+									"        },",
+									"        {",
+									"            \"id\": 4,",
+									"            \"title\": \"Prius amarillo\",",
+									"            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_671179-MLU53368851451_012023-F.webp\"",
+									"        },",
+									"        {",
+									"            \"id\": 5,",
+									"            \"title\": \"Prius amarillo\",",
+									"            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_915019-MLU53368927068_012023-F.webp\"",
+									"        }",
+									"    ],",
+									"    \"category\": \"Deportivo\",",
+									"    \"title\": \"Prius\",",
+									"    \"city\": {",
+									"        \"id\": 1,",
+									"        \"cityName\": \"Montevideo\",",
+									"        \"region\": \"Montevideo\",",
+									"        \"country\": \"Uruguay\"",
+									"    },",
+									"    \"location\": null,",
+									"    \"mapImage\": \"https://i.stack.imgur.com/HILmr.png\",",
+									"    \"description\": \"El Toyota Prius (Toyota Puriusu) es un automóvil híbrido gasolina-eléctrico del segmento C producido por el fabricante de automóviles japonés Toyota que se ha convertido en el más visible representante de los vehículos híbridos.\",",
+									"    \"descriptionTitle\": \"Conduce el auto de tus sueños\",",
+									"    \"globalRating\": 0.0,",
+									"    \"reservations\": [],",
+									"    \"features\": [",
+									"        {",
+									"            \"id\": 1,",
+									"            \"title\": \"Automático\",",
+									"            \"acronym\": \"A\",",
+									"            \"icon\": \"fa-solid fa-gauge-high\"",
+									"        },",
+									"        {",
+									"            \"id\": 3,",
+									"            \"title\": \"Aire acondicionado\",",
+									"            \"acronym\": \"A/C\",",
+									"            \"icon\": \"fa-regular fa-snowflake\"",
+									"        },",
+									"        {",
+									"            \"id\": 7,",
+									"            \"title\": \"5 asientos\",",
+									"            \"acronym\": \"5\",",
+									"            \"icon\": \"fa-solid fa-chair\"",
+									"        },",
+									"        {",
+									"            \"id\": 10,",
+									"            \"title\": \"5 puertas\",",
+									"            \"acronym\": \"5\",",
+									"            \"icon\": \"fa-solid fa-door-open\"",
+									"        },",
+									"        {",
+									"            \"id\": 12,",
+									"            \"title\": \"2 maletas\",",
+									"            \"acronym\": \"2\",",
+									"            \"icon\": \"fa-solid fa-suitcase\"",
+									"        }",
+									"    ],",
+									"    \"policy\": [",
+									"        {",
+									"            \"id\": 1,",
+									"            \"title\": \"Normas de la casa\",",
+									"            \"rules\": [",
+									"                \"Check out: 10:00\",",
+									"                \"No se permite comer dentro del coche\",",
+									"                \"No fumar dentro del coche\"",
+									"            ]",
+									"        },",
+									"        {",
+									"            \"id\": 2,",
+									"            \"title\": \"Salud y seguridad\",",
+									"            \"rules\": [",
+									"                \"Se aplican pautas de distanciamiento social y otras normas del coronaviru\",",
+									"                \"Detector de humo\",",
+									"                \"Depósito de seguridad\"",
+									"            ]",
+									"        },",
+									"        {",
+									"            \"id\": 3,",
+									"            \"title\": \"Política de cancelación\",",
+									"            \"rules\": [",
+									"                \"Agregá las fechas de tu alquiler para obtener los detalles de cancelación de esta reserva\"",
+									"            ]",
+									"        }",
+									"    ]",
+									"});",
+									"});",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"Prius\",\r\n    \"descriptionTitle\": \"Conduce el auto de tus sueños\",\r\n    \"description\":\"El Toyota Prius (Toyota Puriusu) es un automóvil híbrido gasolina-eléctrico del segmento C producido por el fabricante de automóviles japonés Toyota que se ha convertido en el más visible representante de los vehículos híbridos.\",\r\n    \"mapImage\": \"https://i.stack.imgur.com/HILmr.png\",\r\n    \"category\": \"Deportivo\",\r\n    \"city\": {\"cityName\": \"Montevideo\"},\r\n    \"images\": [\r\n        {\r\n            \"title\": \"Prius amarillo\",\r\n            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_977285-MLU53368788792_012023-F.webp\"\r\n        },\r\n        {\r\n            \"title\": \"Prius amarillo\",\r\n            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_785966-MLU53368847549_012023-F.webp\"\r\n        },\r\n        {\r\n            \"title\": \"Prius amarillo\",\r\n            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_616465-MLU53368934026_012023-F.webp\"\r\n        },\r\n        {\r\n            \"title\": \"Prius amarillo\",\r\n            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_671179-MLU53368851451_012023-F.webp\"\r\n        },\r\n        {\r\n            \"title\": \"Prius amarillo\",\r\n            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_915019-MLU53368927068_012023-F.webp\"\r\n        }\r\n    ],\r\n    \"features\": [\r\n        {\"title\": \"Automático\"},\r\n        {\"title\": \"Aire acondicionado\"},\r\n        {\"title\": \"5 asientos\"},\r\n        {\"title\": \"5 puertas\"},\r\n        {\"title\": \"2 maletas\"}\r\n    ],\r\n    \"policy\":  [\r\n        {\r\n            \"title\": \"Normas de la casa\",\r\n            \"rules\": [ \r\n                \"Check out: 10:00\",\r\n                \"No se permite comer dentro del coche\",\r\n                \"No fumar dentro del coche\"\r\n            ]\r\n        },\r\n        {\r\n            \"title\": \"Salud y seguridad\",\r\n            \"rules\": [\r\n                \"Se aplican pautas de distanciamiento social y otras normas del coronaviru\",\r\n                \"Detector de humo\",\r\n                \"Depósito de seguridad\"\r\n            ]\r\n        },\r\n        {\r\n            \"title\": \"Política de cancelación\",\r\n            \"rules\": [\r\n                \"Agregá las fechas de tu alquiler para obtener los detalles de cancelación de esta reserva\"\r\n            ]\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/product",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Kwid",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test json response\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.eql({",
+									"    \"id\": 2,",
+									"    \"images\": [",
+									"        {",
+									"            \"id\": 6,",
+									"            \"title\": \"Kwid\",",
+									"            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_851412-MLU53948656984_022023-F.webp\"",
+									"        },",
+									"        {",
+									"            \"id\": 7,",
+									"            \"title\": \"Kwid\",",
+									"            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_932531-MLU53948656983_022023-F.webp\"",
+									"        },",
+									"        {",
+									"            \"id\": 8,",
+									"            \"title\": \"Kwid\",",
+									"            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_945062-MLU53948656991_022023-F.webp\"",
+									"        },",
+									"        {",
+									"            \"id\": 9,",
+									"            \"title\": \"Kwid\",",
+									"            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_804606-MLU53948656997_022023-F.webp\"",
+									"        },",
+									"        {",
+									"            \"id\": 10,",
+									"            \"title\": \"Kwid\",",
+									"            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_886887-MLU53948656982_022023-F.webp\"",
+									"        }",
+									"    ],",
+									"    \"category\": \"Económico\",",
+									"    \"title\": \"Kwid\",",
+									"    \"city\": {",
+									"        \"id\": 4,",
+									"        \"cityName\": \"Buenos Aires\",",
+									"        \"region\": \"Buenos Aires\",",
+									"        \"country\": \"Argentina\"",
+									"    },",
+									"    \"location\": null,",
+									"    \"mapImage\": \"https://i.stack.imgur.com/HILmr.png\",",
+									"    \"description\": \"El Renault Kwid es un automóvil de turismo del segmento A, producido por el fabricante francés Renault en alianza con Nissan tanto en su planta de Chennai, India como en la de São José dos Pinhais, Brasil. Lanzado como prototipo en el salón del automóvil de Nueva Delhi en 2014 y anunciándose para su producción en mayo de 2015.\",",
+									"    \"descriptionTitle\": \"Conduce el auto de tus sueños\",",
+									"    \"globalRating\": 0.0,",
+									"    \"reservations\": [],",
+									"    \"features\": [",
+									"        {",
+									"            \"id\": 2,",
+									"            \"title\": \"Manual\",",
+									"            \"acronym\": \"M\",",
+									"            \"icon\": \"fa-solid fa-gauge\"",
+									"        },",
+									"        {",
+									"            \"id\": 3,",
+									"            \"title\": \"Aire acondicionado\",",
+									"            \"acronym\": \"A/C\",",
+									"            \"icon\": \"fa-regular fa-snowflake\"",
+									"        },",
+									"        {",
+									"            \"id\": 7,",
+									"            \"title\": \"5 asientos\",",
+									"            \"acronym\": \"5\",",
+									"            \"icon\": \"fa-solid fa-chair\"",
+									"        },",
+									"        {",
+									"            \"id\": 10,",
+									"            \"title\": \"5 puertas\",",
+									"            \"acronym\": \"5\",",
+									"            \"icon\": \"fa-solid fa-door-open\"",
+									"        },",
+									"        {",
+									"            \"id\": 11,",
+									"            \"title\": \"1 maleta\",",
+									"            \"acronym\": \"1\",",
+									"            \"icon\": \"fa-solid fa-suitcase\"",
+									"        }",
+									"    ],",
+									"    \"policy\": [",
+									"        {",
+									"            \"id\": 4,",
+									"            \"title\": \"Normas de la casa\",",
+									"            \"rules\": [",
+									"                \"Check out: 10:00\",",
+									"                \"No se permite comer dentro del coche\",",
+									"                \"No fumar dentro del coche\"",
+									"            ]",
+									"        },",
+									"        {",
+									"            \"id\": 5,",
+									"            \"title\": \"Salud y seguridad\",",
+									"            \"rules\": [",
+									"                \"Se aplican pautas de distanciamiento social y otras normas del coronaviru\",",
+									"                \"Detector de humo\",",
+									"                \"Depósito de seguridad\"",
+									"            ]",
+									"        },",
+									"        {",
+									"            \"id\": 6,",
+									"            \"title\": \"Política de cancelación\",",
+									"            \"rules\": [",
+									"                \"Agregá las fechas de tu alquiler para obtener los detalles de cancelación de esta reserva\"",
+									"            ]",
+									"        }",
+									"    ]",
+									"});",
+									"});",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"Kwid\",\r\n    \"descriptionTitle\": \"Conduce el auto de tus sueños\",\r\n    \"description\":\"El Renault Kwid es un automóvil de turismo del segmento A, producido por el fabricante francés Renault en alianza con Nissan tanto en su planta de Chennai, India como en la de São José dos Pinhais, Brasil. Lanzado como prototipo en el salón del automóvil de Nueva Delhi en 2014 y anunciándose para su producción en mayo de 2015.\",\r\n    \"mapImage\": \"https://i.stack.imgur.com/HILmr.png\",\r\n    \"category\": \"Económico\",\r\n    \"city\": {\"cityName\": \"Buenos Aires\"},\r\n    \"images\": [\r\n        {\r\n            \"title\": \"Kwid\",\r\n            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_851412-MLU53948656984_022023-F.webp\"\r\n        },\r\n        {\r\n            \"title\": \"Kwid\",\r\n            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_932531-MLU53948656983_022023-F.webp\"\r\n        },\r\n        {\r\n            \"title\": \"Kwid\",\r\n            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_945062-MLU53948656991_022023-F.webp\"\r\n        },\r\n        {\r\n            \"title\": \"Kwid\",\r\n            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_804606-MLU53948656997_022023-F.webp\"\r\n        },\r\n        {\r\n            \"title\": \"Kwid\",\r\n            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_886887-MLU53948656982_022023-F.webp\"\r\n        }\r\n    ],\r\n    \"features\": [\r\n        {\"title\": \"Manual\"},\r\n        {\"title\": \"Aire acondicionado\"},\r\n        {\"title\": \"5 asientos\"},\r\n        {\"title\": \"5 puertas\"},\r\n        {\"title\": \"1 maleta\"}\r\n    ],\r\n    \"policy\":  [\r\n        {\r\n            \"title\": \"Normas de la casa\",\r\n            \"rules\": [ \r\n                \"Check out: 10:00\",\r\n                \"No se permite comer dentro del coche\",\r\n                \"No fumar dentro del coche\"\r\n            ]\r\n        },\r\n        {\r\n            \"title\": \"Salud y seguridad\",\r\n            \"rules\": [\r\n                \"Se aplican pautas de distanciamiento social y otras normas del coronaviru\",\r\n                \"Detector de humo\",\r\n                \"Depósito de seguridad\"\r\n            ]\r\n        },\r\n        {\r\n            \"title\": \"Política de cancelación\",\r\n            \"rules\": [\r\n                \"Agregá las fechas de tu alquiler para obtener los detalles de cancelación de esta reserva\"\r\n            ]\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/product",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "C+Pod",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test json response\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.eql({",
+									"    \"id\": 3,",
+									"    \"images\": [",
+									"        {",
+									"            \"id\": 11,",
+									"            \"title\": \"C+Pod\",",
+									"            \"url\": \"https://assets.iproup.com/assets/png/2020/12/15119.png?6.3.0\"",
+									"        },",
+									"        {",
+									"            \"id\": 12,",
+									"            \"title\": \"C+Pod\",",
+									"            \"url\": \"https://ecoinventos.com/wp-content/uploads/2020/12/Toyota-Cpod.jpg\"",
+									"        },",
+									"        {",
+									"            \"id\": 13,",
+									"            \"title\": \"C+Pod\",",
+									"            \"url\": \"https://assets.iproup.com/assets/png/2020/12/15121.png?6.3.0\"",
+									"        },",
+									"        {",
+									"            \"id\": 14,",
+									"            \"title\": \"C+Pod\",",
+									"            \"url\": \"https://assets.iproup.com/assets/png/2020/12/15120.png?6.3.0\"",
+									"        },",
+									"        {",
+									"            \"id\": 15,",
+									"            \"title\": \"C+Pod\",",
+									"            \"url\": \"https://acnews.blob.core.windows.net/imgnews/paragraph/NPAZ_869173fc98c34d529421cdced28fb936.jpg\"",
+									"        }",
+									"    ],",
+									"    \"category\": \"Económico\",",
+									"    \"title\": \"C+Pod\",",
+									"    \"city\": {",
+									"        \"id\": 6,",
+									"        \"cityName\": \"Mendoza\",",
+									"        \"region\": \"Mendoza\",",
+									"        \"country\": \"Argentina\"",
+									"    },",
+									"    \"location\": null,",
+									"    \"mapImage\": \"https://i.stack.imgur.com/HILmr.png\",",
+									"    \"description\": \"El Toyota C+Pod es un automóvil eléctrico de dos asientos producido por el fabricante de automóviles japonés Toyota.\",",
+									"    \"descriptionTitle\": \"Conduce el auto de tus sueños\",",
+									"    \"globalRating\": 0.0,",
+									"    \"reservations\": [],",
+									"    \"features\": [",
+									"        {",
+									"            \"id\": 1,",
+									"            \"title\": \"Automático\",",
+									"            \"acronym\": \"A\",",
+									"            \"icon\": \"fa-solid fa-gauge-high\"",
+									"        },",
+									"        {",
+									"            \"id\": 4,",
+									"            \"title\": \"Eléctrico\",",
+									"            \"acronym\": \"E\",",
+									"            \"icon\": \"fa-solid fa-charging-station\"",
+									"        },",
+									"        {",
+									"            \"id\": 3,",
+									"            \"title\": \"Aire acondicionado\",",
+									"            \"acronym\": \"A/C\",",
+									"            \"icon\": \"fa-regular fa-snowflake\"",
+									"        },",
+									"        {",
+									"            \"id\": 5,",
+									"            \"title\": \"2 asientos\",",
+									"            \"acronym\": \"2\",",
+									"            \"icon\": \"fa-solid fa-chair\"",
+									"        },",
+									"        {",
+									"            \"id\": 8,",
+									"            \"title\": \"3 puertas\",",
+									"            \"acronym\": \"3\",",
+									"            \"icon\": \"fa-solid fa-door-open\"",
+									"        },",
+									"        {",
+									"            \"id\": 11,",
+									"            \"title\": \"1 maleta\",",
+									"            \"acronym\": \"1\",",
+									"            \"icon\": \"fa-solid fa-suitcase\"",
+									"        }",
+									"    ],",
+									"    \"policy\": [",
+									"        {",
+									"            \"id\": 7,",
+									"            \"title\": \"Normas de la casa\",",
+									"            \"rules\": [",
+									"                \"Check out: 10:00\",",
+									"                \"No se permite comer dentro del coche\",",
+									"                \"No fumar dentro del coche\"",
+									"            ]",
+									"        },",
+									"        {",
+									"            \"id\": 8,",
+									"            \"title\": \"Salud y seguridad\",",
+									"            \"rules\": [",
+									"                \"Se aplican pautas de distanciamiento social y otras normas del coronaviru\",",
+									"                \"Detector de humo\",",
+									"                \"Depósito de seguridad\"",
+									"            ]",
+									"        },",
+									"        {",
+									"            \"id\": 9,",
+									"            \"title\": \"Política de cancelación\",",
+									"            \"rules\": [",
+									"                \"Agregá las fechas de tu alquiler para obtener los detalles de cancelación de esta reserva\"",
+									"            ]",
+									"        }",
+									"    ]",
+									"});",
+									"});",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"C+Pod\",\r\n    \"descriptionTitle\": \"Conduce el auto de tus sueños\",\r\n    \"description\":\"El Toyota C+Pod es un automóvil eléctrico de dos asientos producido por el fabricante de automóviles japonés Toyota.\",\r\n    \"mapImage\": \"https://i.stack.imgur.com/HILmr.png\",\r\n    \"category\": \"Económico\",\r\n    \"city\": {\"cityName\": \"Mendoza\"},\r\n    \"images\": [\r\n        {\r\n            \"title\": \"C+Pod\",\r\n            \"url\": \"https://assets.iproup.com/assets/png/2020/12/15119.png?6.3.0\"\r\n        },\r\n        {\r\n            \"title\": \"C+Pod\",\r\n            \"url\": \"https://ecoinventos.com/wp-content/uploads/2020/12/Toyota-Cpod.jpg\"\r\n        },\r\n        {\r\n            \"title\": \"C+Pod\",\r\n            \"url\": \"https://assets.iproup.com/assets/png/2020/12/15121.png?6.3.0\"\r\n        },\r\n        {\r\n            \"title\": \"C+Pod\",\r\n            \"url\": \"https://assets.iproup.com/assets/png/2020/12/15120.png?6.3.0\"\r\n        },\r\n        {\r\n            \"title\": \"C+Pod\",\r\n            \"url\": \"https://acnews.blob.core.windows.net/imgnews/paragraph/NPAZ_869173fc98c34d529421cdced28fb936.jpg\"\r\n        }\r\n    ],\r\n    \"features\": [\r\n        {\"title\": \"Automático\"},\r\n        {\"title\": \"Eléctrico\"},\r\n        {\"title\": \"Aire acondicionado\"},\r\n        {\"title\": \"2 asientos\"},\r\n        {\"title\": \"3 puertas\"},\r\n        {\"title\": \"1 maleta\"}\r\n\r\n    ],\r\n    \"policy\":  [\r\n        {\r\n            \"title\": \"Normas de la casa\",\r\n            \"rules\": [ \r\n                \"Check out: 10:00\",\r\n                \"No se permite comer dentro del coche\",\r\n                \"No fumar dentro del coche\"\r\n            ]\r\n        },\r\n        {\r\n            \"title\": \"Salud y seguridad\",\r\n            \"rules\": [\r\n                \"Se aplican pautas de distanciamiento social y otras normas del coronaviru\",\r\n                \"Detector de humo\",\r\n                \"Depósito de seguridad\"\r\n            ]\r\n        },\r\n        {\r\n            \"title\": \"Política de cancelación\",\r\n            \"rules\": [\r\n                \"Agregá las fechas de tu alquiler para obtener los detalles de cancelación de esta reserva\"\r\n            ]\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/product",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Zoe",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test json response\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.eql({",
+									"    \"id\": 4,",
+									"    \"images\": [",
+									"        {",
+									"            \"id\": 16,",
+									"            \"title\": \"Zoe\",",
+									"            \"url\": \"https://1.bp.blogspot.com/-X1BLJOANMl0/XQgbA93JOPI/AAAAAAADAa0/wHwJMEz_3j02Yh1PZo_DBwPm7j0JGp6sACLcBGAs/s1600/New%2BRenault%2BZOE%2BEMBARGO%2B12h00%2BUK%2B170619%2B%2B%252836%2529.jpg\"",
+									"        },",
+									"        {",
+									"            \"id\": 17,",
+									"            \"title\": \"Zoe\",",
+									"            \"url\": \"https://www.renault.com.uy/CountriesData/Uruguay/images/cars/HELIOS/ZOEB10ph2/Overview/renault-zoe-overview-01_ig_w400_h225.jpg\"",
+									"        },",
+									"        {",
+									"            \"id\": 18,",
+									"            \"title\": \"Zoe\",",
+									"            \"url\": \"https://i0.wp.com/atodotorque.com.uy/wp-content/uploads/2022/02/2ac53-renault-zoe-2020-1600-25.jpg?resize=1200%2C650&ssl=1\"",
+									"        },",
+									"        {",
+									"            \"id\": 19,",
+									"            \"title\": \"Zoe\",",
+									"            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_642136-MLU50301788528_062022-O.jpg\"",
+									"        },",
+									"        {",
+									"            \"id\": 20,",
+									"            \"title\": \"Zoe\",",
+									"            \"url\": \"https://www.actualidadmotor.com/wp-content/uploads/2022/06/Renault-Zoe-model-year-2022-6.png\"",
+									"        }",
+									"    ],",
+									"    \"category\": \"Deportivo\",",
+									"    \"title\": \"Zoe\",",
+									"    \"city\": {",
+									"        \"id\": 1,",
+									"        \"cityName\": \"Montevideo\",",
+									"        \"region\": \"Montevideo\",",
+									"        \"country\": \"Uruguay\"",
+									"    },",
+									"    \"location\": null,",
+									"    \"mapImage\": null,",
+									"    \"description\": \"El Renault ZOE es un automóvil eléctrico producido por el fabricante francés Renault. Tiene un motor de 65 kW (88 CV) y 220 N·m. La batería es de iones de litio y tiene una capacidad de 22 kWh, 41 kWh y 50 kWh, alcanzando una autonomía real de hasta unos 390 km en homologación WLTP, dependiendo de la capacidad de la batería. Se presenta en tres versiones Life, Intense y Zen.\",",
+									"    \"descriptionTitle\": \"Conduce el auto de tus sueños\",",
+									"    \"globalRating\": 0.0,",
+									"    \"reservations\": [],",
+									"    \"features\": [",
+									"        {",
+									"            \"id\": 1,",
+									"            \"title\": \"Automático\",",
+									"            \"acronym\": \"A\",",
+									"            \"icon\": \"fa-solid fa-gauge-high\"",
+									"        },",
+									"        {",
+									"            \"id\": 4,",
+									"            \"title\": \"Eléctrico\",",
+									"            \"acronym\": \"E\",",
+									"            \"icon\": \"fa-solid fa-charging-station\"",
+									"        },",
+									"        {",
+									"            \"id\": 3,",
+									"            \"title\": \"Aire acondicionado\",",
+									"            \"acronym\": \"A/C\",",
+									"            \"icon\": \"fa-regular fa-snowflake\"",
+									"        },",
+									"        {",
+									"            \"id\": 7,",
+									"            \"title\": \"5 asientos\",",
+									"            \"acronym\": \"5\",",
+									"            \"icon\": \"fa-solid fa-chair\"",
+									"        },",
+									"        {",
+									"            \"id\": 10,",
+									"            \"title\": \"5 puertas\",",
+									"            \"acronym\": \"5\",",
+									"            \"icon\": \"fa-solid fa-door-open\"",
+									"        },",
+									"        {",
+									"            \"id\": 11,",
+									"            \"title\": \"1 maleta\",",
+									"            \"acronym\": \"1\",",
+									"            \"icon\": \"fa-solid fa-suitcase\"",
+									"        }",
+									"    ],",
+									"    \"policy\": [",
+									"        {",
+									"            \"id\": 10,",
+									"            \"title\": \"Normas de la casa\",",
+									"            \"rules\": [",
+									"                \"Check out: 10:00\",",
+									"                \"No se permite comer dentro del coche\",",
+									"                \"No fumar dentro del coche\"",
+									"            ]",
+									"        },",
+									"        {",
+									"            \"id\": 11,",
+									"            \"title\": \"Salud y seguridad\",",
+									"            \"rules\": [",
+									"                \"Se aplican pautas de distanciamiento social y otras normas del coronaviru\",",
+									"                \"Detector de humo\",",
+									"                \"Depósito de seguridad\"",
+									"            ]",
+									"        },",
+									"        {",
+									"            \"id\": 12,",
+									"            \"title\": \"Política de cancelación\",",
+									"            \"rules\": [",
+									"                \"Agregá las fechas de tu alquiler para obtener los detalles de cancelación de esta reserva\"",
+									"            ]",
+									"        }",
+									"    ]",
+									"});",
+									"});",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"Zoe\",\r\n    \"descriptionTitle\": \"Conduce el auto de tus sueños\",\r\n    \"description\":\"El Renault ZOE es un automóvil eléctrico producido por el fabricante francés Renault. Tiene un motor de 65 kW (88 CV) y 220 N·m. La batería es de iones de litio y tiene una capacidad de 22 kWh, 41 kWh y 50 kWh, alcanzando una autonomía real de hasta unos 390 km en homologación WLTP, dependiendo de la capacidad de la batería. Se presenta en tres versiones Life, Intense y Zen.\",\r\n    \"category\": \"Deportivo\",\r\n    \"city\": {\"cityName\": \"Montevideo\"},\r\n    \"images\": [\r\n        {\r\n            \"title\": \"Zoe\",\r\n            \"url\": \"https://1.bp.blogspot.com/-X1BLJOANMl0/XQgbA93JOPI/AAAAAAADAa0/wHwJMEz_3j02Yh1PZo_DBwPm7j0JGp6sACLcBGAs/s1600/New%2BRenault%2BZOE%2BEMBARGO%2B12h00%2BUK%2B170619%2B%2B%252836%2529.jpg\"\r\n        },\r\n        {\r\n            \"title\": \"Zoe\",\r\n            \"url\": \"https://www.renault.com.uy/CountriesData/Uruguay/images/cars/HELIOS/ZOEB10ph2/Overview/renault-zoe-overview-01_ig_w400_h225.jpg\"\r\n        },\r\n        {\r\n            \"title\": \"Zoe\",\r\n            \"url\": \"https://i0.wp.com/atodotorque.com.uy/wp-content/uploads/2022/02/2ac53-renault-zoe-2020-1600-25.jpg?resize=1200%2C650&ssl=1\"\r\n        },\r\n        {\r\n            \"title\": \"Zoe\",\r\n            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_642136-MLU50301788528_062022-O.jpg\"\r\n        },\r\n        {\r\n            \"title\": \"Zoe\",\r\n            \"url\": \"https://www.actualidadmotor.com/wp-content/uploads/2022/06/Renault-Zoe-model-year-2022-6.png\"\r\n        }\r\n    ],\r\n    \"features\": [\r\n        {\"title\": \"Automático\"},\r\n        {\"title\": \"Eléctrico\"},\r\n        {\"title\": \"Aire acondicionado\"},\r\n        {\"title\": \"5 asientos\"},\r\n        {\"title\": \"5 puertas\"},\r\n        {\"title\": \"1 maleta\"}\r\n    ],\r\n    \"policy\":  [\r\n        {\r\n            \"title\": \"Normas de la casa\",\r\n            \"rules\": [ \r\n                \"Check out: 10:00\",\r\n                \"No se permite comer dentro del coche\",\r\n                \"No fumar dentro del coche\"\r\n            ]\r\n        },\r\n        {\r\n            \"title\": \"Salud y seguridad\",\r\n            \"rules\": [\r\n                \"Se aplican pautas de distanciamiento social y otras normas del coronaviru\",\r\n                \"Detector de humo\",\r\n                \"Depósito de seguridad\"\r\n            ]\r\n        },\r\n        {\r\n            \"title\": \"Política de cancelación\",\r\n            \"rules\": [\r\n                \"Agregá las fechas de tu alquiler para obtener los detalles de cancelación de esta reserva\"\r\n            ]\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/product",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GLA 2023",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test json response\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.eql({",
+									"    \"id\": 5,",
+									"    \"images\": [",
+									"        {",
+									"            \"id\": 21,",
+									"            \"title\": \"GLA 2023\",",
+									"            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_614323-MLU53809072433_022023-F.webp\"",
+									"        },",
+									"        {",
+									"            \"id\": 22,",
+									"            \"title\": \"GLA 2023\",",
+									"            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_827000-MLU53809163194_022023-F.webp\"",
+									"        },",
+									"        {",
+									"            \"id\": 23,",
+									"            \"title\": \"GLA 2023\",",
+									"            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_827248-MLU53808914830_022023-F.webp\"",
+									"        },",
+									"        {",
+									"            \"id\": 24,",
+									"            \"title\": \"GLA 2023\",",
+									"            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_864948-MLU53809104428_022023-F.webp\"",
+									"        },",
+									"        {",
+									"            \"id\": 25,",
+									"            \"title\": \"GLA 2023\",",
+									"            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_633417-MLU53809228033_022023-F.webp\"",
+									"        }",
+									"    ],",
+									"    \"category\": \"De lujo\",",
+									"    \"title\": \"GLA 2023\",",
+									"    \"city\": {",
+									"        \"id\": 6,",
+									"        \"cityName\": \"Mendoza\",",
+									"        \"region\": \"Mendoza\",",
+									"        \"country\": \"Argentina\"",
+									"    },",
+									"    \"location\": null,",
+									"    \"mapImage\": null,",
+									"    \"description\": \"El Mercedes-Benz Clase GLA (X156) es un crossover SUV prémium del segmento C que el fabricante alemán Mercedes-Benz produce desde el año 2013. Es un cinco plazas con carrocería de cinco puertas y motor delantero transversal, disponible con tracción delantera y a las cuatro ruedas.\",",
+									"    \"descriptionTitle\": \"Conduce el auto de tus sueños\",",
+									"    \"globalRating\": 0.0,",
+									"    \"reservations\": [],",
+									"    \"features\": [",
+									"        {",
+									"            \"id\": 1,",
+									"            \"title\": \"Automático\",",
+									"            \"acronym\": \"A\",",
+									"            \"icon\": \"fa-solid fa-gauge-high\"",
+									"        },",
+									"        {",
+									"            \"id\": 3,",
+									"            \"title\": \"Aire acondicionado\",",
+									"            \"acronym\": \"A/C\",",
+									"            \"icon\": \"fa-regular fa-snowflake\"",
+									"        },",
+									"        {",
+									"            \"id\": 7,",
+									"            \"title\": \"5 asientos\",",
+									"            \"acronym\": \"5\",",
+									"            \"icon\": \"fa-solid fa-chair\"",
+									"        },",
+									"        {",
+									"            \"id\": 10,",
+									"            \"title\": \"5 puertas\",",
+									"            \"acronym\": \"5\",",
+									"            \"icon\": \"fa-solid fa-door-open\"",
+									"        },",
+									"        {",
+									"            \"id\": 12,",
+									"            \"title\": \"2 maletas\",",
+									"            \"acronym\": \"2\",",
+									"            \"icon\": \"fa-solid fa-suitcase\"",
+									"        }",
+									"    ],",
+									"    \"policy\": [",
+									"        {",
+									"            \"id\": 13,",
+									"            \"title\": \"Normas de la casa\",",
+									"            \"rules\": [",
+									"                \"Check out: 10:00\",",
+									"                \"No se permite comer dentro del coche\",",
+									"                \"No fumar dentro del coche\"",
+									"            ]",
+									"        },",
+									"        {",
+									"            \"id\": 14,",
+									"            \"title\": \"Salud y seguridad\",",
+									"            \"rules\": [",
+									"                \"Se aplican pautas de distanciamiento social y otras normas del coronaviru\",",
+									"                \"Detector de humo\",",
+									"                \"Depósito de seguridad\"",
+									"            ]",
+									"        },",
+									"        {",
+									"            \"id\": 15,",
+									"            \"title\": \"Política de cancelación\",",
+									"            \"rules\": [",
+									"                \"Agregá las fechas de tu alquiler para obtener los detalles de cancelación de esta reserva\"",
+									"            ]",
+									"        }",
+									"    ]",
+									"});",
+									"});",
+									"",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"GLA 2023\",\r\n    \"descriptionTitle\": \"Conduce el auto de tus sueños\",\r\n    \"description\":\"El Mercedes-Benz Clase GLA (X156) es un crossover SUV prémium del segmento C que el fabricante alemán Mercedes-Benz produce desde el año 2013. Es un cinco plazas con carrocería de cinco puertas y motor delantero transversal, disponible con tracción delantera y a las cuatro ruedas.\",\r\n    \"category\": \"De lujo\",\r\n    \"city\": {\"cityName\": \"Mendoza\"},\r\n    \"images\": [\r\n        {\r\n            \"title\": \"GLA 2023\",\r\n            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_614323-MLU53809072433_022023-F.webp\"\r\n        },\r\n        {\r\n            \"title\": \"GLA 2023\",\r\n            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_827000-MLU53809163194_022023-F.webp\"\r\n        },\r\n        {\r\n            \"title\": \"GLA 2023\",\r\n            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_827248-MLU53808914830_022023-F.webp\"\r\n        },\r\n        {\r\n            \"title\": \"GLA 2023\",\r\n            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_864948-MLU53809104428_022023-F.webp\"\r\n        },\r\n        {\r\n            \"title\": \"GLA 2023\",\r\n            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_633417-MLU53809228033_022023-F.webp\"\r\n        }\r\n    ],\r\n    \"features\": [\r\n        {\"title\": \"Automático\"},\r\n        {\"title\": \"Aire acondicionado\"},\r\n        {\"title\": \"5 asientos\"},\r\n        {\"title\": \"5 puertas\"},\r\n        {\"title\": \"2 maletas\"}\r\n    ],\r\n    \"policy\":  [\r\n        {\r\n            \"title\": \"Normas de la casa\",\r\n            \"rules\": [ \r\n                \"Check out: 10:00\",\r\n                \"No se permite comer dentro del coche\",\r\n                \"No fumar dentro del coche\"\r\n            ]\r\n        },\r\n        {\r\n            \"title\": \"Salud y seguridad\",\r\n            \"rules\": [\r\n                \"Se aplican pautas de distanciamiento social y otras normas del coronaviru\",\r\n                \"Detector de humo\",\r\n                \"Depósito de seguridad\"\r\n            ]\r\n        },\r\n        {\r\n            \"title\": \"Política de cancelación\",\r\n            \"rules\": [\r\n                \"Agregá las fechas de tu alquiler para obtener los detalles de cancelación de esta reserva\"\r\n            ]\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/product",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eclipse Cross",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test json response\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.eql({",
+									"    \"id\": 6,",
+									"    \"images\": [",
+									"        {",
+									"            \"id\": 26,",
+									"            \"title\": \"Eclipse Cross\",",
+									"            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_996499-MLU54101409428_032023-F.webp\"",
+									"        },",
+									"        {",
+									"            \"id\": 27,",
+									"            \"title\": \"Eclipse Cross\",",
+									"            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_976235-MLU54101409427_032023-F.webp\"",
+									"        },",
+									"        {",
+									"            \"id\": 28,",
+									"            \"title\": \"Eclipse Cross\",",
+									"            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_656651-MLU54101409432_032023-F.webp\"",
+									"        },",
+									"        {",
+									"            \"id\": 29,",
+									"            \"title\": \"Eclipse Cross\",",
+									"            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_786973-MLU54101409436_032023-F.webp\"",
+									"        },",
+									"        {",
+									"            \"id\": 30,",
+									"            \"title\": \"Eclipse Cross\",",
+									"            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_657437-MLU54101409425_032023-F.webp\"",
+									"        }",
+									"    ],",
+									"    \"category\": \"Todoterreno\",",
+									"    \"title\": \"Eclipse Cross\",",
+									"    \"city\": {",
+									"        \"id\": 1,",
+									"        \"cityName\": \"Montevideo\",",
+									"        \"region\": \"Montevideo\",",
+									"        \"country\": \"Uruguay\"",
+									"    },",
+									"    \"location\": null,",
+									"    \"mapImage\": null,",
+									"    \"description\": \"El Mitsubishi Eclipse Cross es un SUV crossover compacto producido por el fabricante de automóviles japonés Mitsubishi Motors desde octubre de 2017.\",",
+									"    \"descriptionTitle\": \"Conduce el auto de tus sueños\",",
+									"    \"globalRating\": 0.0,",
+									"    \"reservations\": [],",
+									"    \"features\": [",
+									"        {",
+									"            \"id\": 1,",
+									"            \"title\": \"Automático\",",
+									"            \"acronym\": \"A\",",
+									"            \"icon\": \"fa-solid fa-gauge-high\"",
+									"        },",
+									"        {",
+									"            \"id\": 3,",
+									"            \"title\": \"Aire acondicionado\",",
+									"            \"acronym\": \"A/C\",",
+									"            \"icon\": \"fa-regular fa-snowflake\"",
+									"        },",
+									"        {",
+									"            \"id\": 6,",
+									"            \"title\": \"4 asientos\",",
+									"            \"acronym\": \"4\",",
+									"            \"icon\": \"fa-solid fa-chair\"",
+									"        },",
+									"        {",
+									"            \"id\": 10,",
+									"            \"title\": \"5 puertas\",",
+									"            \"acronym\": \"5\",",
+									"            \"icon\": \"fa-solid fa-door-open\"",
+									"        },",
+									"        {",
+									"            \"id\": 12,",
+									"            \"title\": \"2 maletas\",",
+									"            \"acronym\": \"2\",",
+									"            \"icon\": \"fa-solid fa-suitcase\"",
+									"        }",
+									"    ],",
+									"    \"policy\": [",
+									"        {",
+									"            \"id\": 16,",
+									"            \"title\": \"Normas de la casa\",",
+									"            \"rules\": [",
+									"                \"Check out: 10:00\",",
+									"                \"No se permite comer dentro del coche\",",
+									"                \"No fumar dentro del coche\"",
+									"            ]",
+									"        },",
+									"        {",
+									"            \"id\": 17,",
+									"            \"title\": \"Salud y seguridad\",",
+									"            \"rules\": [",
+									"                \"Se aplican pautas de distanciamiento social y otras normas del coronaviru\",",
+									"                \"Detector de humo\",",
+									"                \"Depósito de seguridad\"",
+									"            ]",
+									"        },",
+									"        {",
+									"            \"id\": 18,",
+									"            \"title\": \"Política de cancelación\",",
+									"            \"rules\": [",
+									"                \"Agregá las fechas de tu alquiler para obtener los detalles de cancelación de esta reserva\"",
+									"            ]",
+									"        }",
+									"    ]",
+									"});",
+									"});",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"Eclipse Cross\",\r\n    \"descriptionTitle\": \"Conduce el auto de tus sueños\",\r\n    \"description\":\"El Mitsubishi Eclipse Cross es un SUV crossover compacto producido por el fabricante de automóviles japonés Mitsubishi Motors desde octubre de 2017.\",\r\n    \"category\": \"Todoterreno\",\r\n    \"city\": {\"cityName\": \"Montevideo\"},\r\n    \"images\": [\r\n        {\r\n            \"title\": \"Eclipse Cross\",\r\n            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_996499-MLU54101409428_032023-F.webp\"\r\n        },\r\n        {\r\n            \"title\": \"Eclipse Cross\",\r\n            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_976235-MLU54101409427_032023-F.webp\"\r\n        },\r\n        {\r\n            \"title\": \"Eclipse Cross\",\r\n            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_656651-MLU54101409432_032023-F.webp\"\r\n        },\r\n        {\r\n            \"title\": \"Eclipse Cross\",\r\n            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_786973-MLU54101409436_032023-F.webp\"\r\n        },\r\n        {\r\n            \"title\": \"Eclipse Cross\",\r\n            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_657437-MLU54101409425_032023-F.webp\"\r\n        }\r\n    ],\r\n    \"features\": [\r\n        {\"title\": \"Automático\"},\r\n        {\"title\": \"Aire acondicionado\"},\r\n        {\"title\": \"4 asientos\"},\r\n        {\"title\": \"5 puertas\"},\r\n        {\"title\": \"2 maletas\"}\r\n    ],\r\n    \"policy\":  [\r\n        {\r\n            \"title\": \"Normas de la casa\",\r\n            \"rules\": [ \r\n                \"Check out: 10:00\",\r\n                \"No se permite comer dentro del coche\",\r\n                \"No fumar dentro del coche\"\r\n            ]\r\n        },\r\n        {\r\n            \"title\": \"Salud y seguridad\",\r\n            \"rules\": [\r\n                \"Se aplican pautas de distanciamiento social y otras normas del coronaviru\",\r\n                \"Detector de humo\",\r\n                \"Depósito de seguridad\"\r\n            ]\r\n        },\r\n        {\r\n            \"title\": \"Política de cancelación\",\r\n            \"rules\": [\r\n                \"Agregá las fechas de tu alquiler para obtener los detalles de cancelación de esta reserva\"\r\n            ]\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/product",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Hatchback Clase A",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test json response\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.eql({",
+									"    \"id\": 7,",
+									"    \"images\": [",
+									"        {",
+									"            \"id\": 31,",
+									"            \"title\": \"Hatchback Clase A\",",
+									"            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_605558-MLU53043718061_122022-F.webp\"",
+									"        },",
+									"        {",
+									"            \"id\": 32,",
+									"            \"title\": \"Hatchback Clase A\",",
+									"            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_602556-MLU53043602734_122022-F.webp\"",
+									"        },",
+									"        {",
+									"            \"id\": 33,",
+									"            \"title\": \"Hatchback Clase A\",",
+									"            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_860058-MLU53043543941_122022-F.webp\"",
+									"        },",
+									"        {",
+									"            \"id\": 34,",
+									"            \"title\": \"Hatchback Clase A\",",
+									"            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_740904-MLU53043632525_122022-F.webp\"",
+									"        },",
+									"        {",
+									"            \"id\": 35,",
+									"            \"title\": \"Hatchback Clase A\",",
+									"            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_835989-MLU53043597709_122022-F.webp\"",
+									"        }",
+									"    ],",
+									"    \"category\": \"De lujo\",",
+									"    \"title\": \"Hatchback Clase A\",",
+									"    \"city\": {",
+									"        \"id\": 2,",
+									"        \"cityName\": \"Punta del Este\",",
+									"        \"region\": \"Maldonado\",",
+									"        \"country\": \"Uruguay\"",
+									"    },",
+									"    \"location\": null,",
+									"    \"mapImage\": null,",
+									"    \"description\": \"El Mercedes-Benz Clase A es un automóvil premium del segmento C (en anteriores generaciones fue un monovolumen del segmento B) producido por el fabricante alemán Mercedes-Benz desde el año 1997. El Clase A tiene su motor en posición delantera transversal, algo también inusual en los modelos de Mercedes-Benz. El Clase A es el modelo de entrada a la marca.\",",
+									"    \"descriptionTitle\": \"Conduce el auto de tus sueños\",",
+									"    \"globalRating\": 0.0,",
+									"    \"reservations\": [],",
+									"    \"features\": [",
+									"        {",
+									"            \"id\": 1,",
+									"            \"title\": \"Automático\",",
+									"            \"acronym\": \"A\",",
+									"            \"icon\": \"fa-solid fa-gauge-high\"",
+									"        },",
+									"        {",
+									"            \"id\": 3,",
+									"            \"title\": \"Aire acondicionado\",",
+									"            \"acronym\": \"A/C\",",
+									"            \"icon\": \"fa-regular fa-snowflake\"",
+									"        },",
+									"        {",
+									"            \"id\": 7,",
+									"            \"title\": \"5 asientos\",",
+									"            \"acronym\": \"5\",",
+									"            \"icon\": \"fa-solid fa-chair\"",
+									"        },",
+									"        {",
+									"            \"id\": 10,",
+									"            \"title\": \"5 puertas\",",
+									"            \"acronym\": \"5\",",
+									"            \"icon\": \"fa-solid fa-door-open\"",
+									"        },",
+									"        {",
+									"            \"id\": 11,",
+									"            \"title\": \"1 maleta\",",
+									"            \"acronym\": \"1\",",
+									"            \"icon\": \"fa-solid fa-suitcase\"",
+									"        }",
+									"    ],",
+									"    \"policy\": [",
+									"        {",
+									"            \"id\": 19,",
+									"            \"title\": \"Normas de la casa\",",
+									"            \"rules\": [",
+									"                \"Check out: 10:00\",",
+									"                \"No se permite comer dentro del coche\",",
+									"                \"No fumar dentro del coche\"",
+									"            ]",
+									"        },",
+									"        {",
+									"            \"id\": 20,",
+									"            \"title\": \"Salud y seguridad\",",
+									"            \"rules\": [",
+									"                \"Se aplican pautas de distanciamiento social y otras normas del coronaviru\",",
+									"                \"Detector de humo\",",
+									"                \"Depósito de seguridad\"",
+									"            ]",
+									"        },",
+									"        {",
+									"            \"id\": 21,",
+									"            \"title\": \"Política de cancelación\",",
+									"            \"rules\": [",
+									"                \"Agregá las fechas de tu alquiler para obtener los detalles de cancelación de esta reserva\"",
+									"            ]",
+									"        }",
+									"    ]",
+									"});",
+									"});",
+									"",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"Hatchback Clase A\",\r\n    \"descriptionTitle\": \"Conduce el auto de tus sueños\",\r\n    \"description\":\"El Mercedes-Benz Clase A es un automóvil premium del segmento C (en anteriores generaciones fue un monovolumen del segmento B) producido por el fabricante alemán Mercedes-Benz desde el año 1997. El Clase A tiene su motor en posición delantera transversal, algo también inusual en los modelos de Mercedes-Benz. El Clase A es el modelo de entrada a la marca.\",\r\n    \"category\": \"De lujo\",\r\n    \"city\": {\"cityName\": \"Punta del Este\"},\r\n    \"images\": [\r\n        {\r\n            \"title\": \"Hatchback Clase A\",\r\n            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_605558-MLU53043718061_122022-F.webp\"\r\n        },\r\n        {\r\n            \"title\": \"Hatchback Clase A\",\r\n            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_602556-MLU53043602734_122022-F.webp\"\r\n        },\r\n        {\r\n            \"title\": \"Hatchback Clase A\",\r\n            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_860058-MLU53043543941_122022-F.webp\"\r\n        },\r\n        {\r\n            \"title\": \"Hatchback Clase A\",\r\n            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_740904-MLU53043632525_122022-F.webp\"\r\n        },\r\n        {\r\n            \"title\": \"Hatchback Clase A\",\r\n            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_835989-MLU53043597709_122022-F.webp\"\r\n        }\r\n    ],\r\n    \"features\": [\r\n        {\"title\": \"Automático\"},\r\n        {\"title\": \"Aire acondicionado\"},\r\n        {\"title\": \"5 asientos\"},\r\n        {\"title\": \"5 puertas\"},\r\n        {\"title\": \"1 maleta\"}\r\n    ],\r\n    \"policy\":  [\r\n        {\r\n            \"title\": \"Normas de la casa\",\r\n            \"rules\": [ \r\n                \"Check out: 10:00\",\r\n                \"No se permite comer dentro del coche\",\r\n                \"No fumar dentro del coche\"\r\n            ]\r\n        },\r\n        {\r\n            \"title\": \"Salud y seguridad\",\r\n            \"rules\": [\r\n                \"Se aplican pautas de distanciamiento social y otras normas del coronaviru\",\r\n                \"Detector de humo\",\r\n                \"Depósito de seguridad\"\r\n            ]\r\n        },\r\n        {\r\n            \"title\": \"Política de cancelación\",\r\n            \"rules\": [\r\n                \"Agregá las fechas de tu alquiler para obtener los detalles de cancelación de esta reserva\"\r\n            ]\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/product",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "L200 Triton 2008",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test json response\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.eql({",
+									"    \"id\": 8,",
+									"    \"images\": [",
+									"        {",
+									"            \"id\": 36,",
+									"            \"title\": \"L200 Triton 2008\",",
+									"            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_748460-MLU53131184063_012023-F.webp\"",
+									"        },",
+									"        {",
+									"            \"id\": 37,",
+									"            \"title\": \"L200 Triton 2008\",",
+									"            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_885365-MLU53131124348_012023-F.webp\"",
+									"        },",
+									"        {",
+									"            \"id\": 38,",
+									"            \"title\": \"L200 Triton 2008\",",
+									"            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_810895-MLU53131051750_012023-F.webp\"",
+									"        },",
+									"        {",
+									"            \"id\": 39,",
+									"            \"title\": \"L200 Triton 2008\",",
+									"            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_936087-MLU53131070549_012023-F.webp\"",
+									"        },",
+									"        {",
+									"            \"id\": 40,",
+									"            \"title\": \"L200 Triton 2008\",",
+									"            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_995995-MLU53131070552_012023-F.webp\"",
+									"        }",
+									"    ],",
+									"    \"category\": \"Todoterreno\",",
+									"    \"title\": \"L200 Triton 2008\",",
+									"    \"city\": {",
+									"        \"id\": 3,",
+									"        \"cityName\": \"Minas\",",
+									"        \"region\": \"Lavalleja\",",
+									"        \"country\": \"Uruguay\"",
+									"    },",
+									"    \"location\": null,",
+									"    \"mapImage\": null,",
+									"    \"description\": \"La Mitsubishi L200 también conocida como Mighty Max, Forte, Triton, Sportero, Strada, Work, Katana o Dakkar es una camioneta compacta producida por Mitsubishi Motors.\",",
+									"    \"descriptionTitle\": \"Conduce el auto de tus sueños\",",
+									"    \"globalRating\": 0.0,",
+									"    \"reservations\": [],",
+									"    \"features\": [",
+									"        {",
+									"            \"id\": 2,",
+									"            \"title\": \"Manual\",",
+									"            \"acronym\": \"M\",",
+									"            \"icon\": \"fa-solid fa-gauge\"",
+									"        },",
+									"        {",
+									"            \"id\": 7,",
+									"            \"title\": \"5 asientos\",",
+									"            \"acronym\": \"5\",",
+									"            \"icon\": \"fa-solid fa-chair\"",
+									"        },",
+									"        {",
+									"            \"id\": 9,",
+									"            \"title\": \"4 puertas\",",
+									"            \"acronym\": \"4\",",
+									"            \"icon\": \"fa-solid fa-door-open\"",
+									"        },",
+									"        {",
+									"            \"id\": 12,",
+									"            \"title\": \"2 maletas\",",
+									"            \"acronym\": \"2\",",
+									"            \"icon\": \"fa-solid fa-suitcase\"",
+									"        }",
+									"    ],",
+									"    \"policy\": [",
+									"        {",
+									"            \"id\": 22,",
+									"            \"title\": \"Normas de la casa\",",
+									"            \"rules\": [",
+									"                \"Check out: 10:00\",",
+									"                \"No se permite comer dentro del coche\",",
+									"                \"No fumar dentro del coche\"",
+									"            ]",
+									"        },",
+									"        {",
+									"            \"id\": 23,",
+									"            \"title\": \"Salud y seguridad\",",
+									"            \"rules\": [",
+									"                \"Se aplican pautas de distanciamiento social y otras normas del coronaviru\",",
+									"                \"Detector de humo\",",
+									"                \"Depósito de seguridad\"",
+									"            ]",
+									"        },",
+									"        {",
+									"            \"id\": 24,",
+									"            \"title\": \"Política de cancelación\",",
+									"            \"rules\": [",
+									"                \"Agregá las fechas de tu alquiler para obtener los detalles de cancelación de esta reserva\"",
+									"            ]",
+									"        }",
+									"    ]",
+									"});",
+									"});",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"L200 Triton 2008\",\r\n    \"descriptionTitle\": \"Conduce el auto de tus sueños\",\r\n    \"description\":\"La Mitsubishi L200 también conocida como Mighty Max, Forte, Triton, Sportero, Strada, Work, Katana o Dakkar es una camioneta compacta producida por Mitsubishi Motors.\",\r\n    \"category\": \"Todoterreno\",\r\n    \"city\": {\"cityName\": \"Minas\"},\r\n    \"images\": [\r\n        {\r\n            \"title\": \"L200 Triton 2008\",\r\n            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_748460-MLU53131184063_012023-F.webp\"\r\n        },\r\n        {\r\n            \"title\": \"L200 Triton 2008\",\r\n            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_885365-MLU53131124348_012023-F.webp\"\r\n        },\r\n        {\r\n            \"title\": \"L200 Triton 2008\",\r\n            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_810895-MLU53131051750_012023-F.webp\"\r\n        },\r\n        {\r\n            \"title\": \"L200 Triton 2008\",\r\n            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_936087-MLU53131070549_012023-F.webp\"\r\n        },\r\n        {\r\n            \"title\": \"L200 Triton 2008\",\r\n            \"url\": \"https://http2.mlstatic.com/D_NQ_NP_2X_995995-MLU53131070552_012023-F.webp\"\r\n        }\r\n    ],\r\n    \"features\": [\r\n        {\"title\": \"Manual\"},\r\n        {\"title\": \"5 asientos\"},\r\n        {\"title\": \"4 puertas\"},\r\n        {\"title\": \"2 maletas\"}\r\n    ],\r\n    \"policy\":  [\r\n        {\r\n            \"title\": \"Normas de la casa\",\r\n            \"rules\": [ \r\n                \"Check out: 10:00\",\r\n                \"No se permite comer dentro del coche\",\r\n                \"No fumar dentro del coche\"\r\n            ]\r\n        },\r\n        {\r\n            \"title\": \"Salud y seguridad\",\r\n            \"rules\": [\r\n                \"Se aplican pautas de distanciamiento social y otras normas del coronaviru\",\r\n                \"Detector de humo\",\r\n                \"Depósito de seguridad\"\r\n            ]\r\n        },\r\n        {\r\n            \"title\": \"Política de cancelación\",\r\n            \"rules\": [\r\n                \"Agregá las fechas de tu alquiler para obtener los detalles de cancelación de esta reserva\"\r\n            ]\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/product",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"product"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Review POST",
+			"item": [
+				{
+					"name": "Review Prius 4 estrellas",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test json response\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.eql({",
+									"    \"id\": 1,",
+									"    \"user_id\": 1,",
+									"    \"product_id\": 1,",
+									"    \"rating\": 4",
+									"});",
+									"});",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\": 1,\r\n    \"product_id\": 1,\r\n    \"rating\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/review",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"review"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Review Prius 5 estrellas",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test json response\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.eql({",
+									"    \"id\": 2,",
+									"    \"user_id\": 1,",
+									"    \"product_id\": 1,",
+									"    \"rating\": 5",
+									"});",
+									"});",
+									"",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\": 1,\r\n    \"product_id\": 1,\r\n    \"rating\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/review",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"review"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Review Kwid 3 estrellas",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test json response\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.eql({",
+									"    \"id\": 3,",
+									"    \"user_id\": 1,",
+									"    \"product_id\": 2,",
+									"    \"rating\": 3",
+									"});",
+									"});",
+									"",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\": 1,\r\n    \"product_id\": 2,\r\n    \"rating\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/review",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"review"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Review Kwid 4 estrellas",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test json response\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.eql({",
+									"    \"id\": 4,",
+									"    \"user_id\": 1,",
+									"    \"product_id\": 2,",
+									"    \"rating\": 4",
+									"});",
+									"});",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\": 1,\r\n    \"product_id\": 2,\r\n    \"rating\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/review",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"review"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Review Kwid 4 estrellas",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test json response\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.eql({",
+									"    \"id\": 5,",
+									"    \"user_id\": 1,",
+									"    \"product_id\": 2,",
+									"    \"rating\": 4",
+									"});",
+									"});",
+									"",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\": 1,\r\n    \"product_id\": 2,\r\n    \"rating\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/review",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"review"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Review C+Pod 3 estrellas",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test json response\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.eql({",
+									"    \"id\": 6,",
+									"    \"user_id\": 1,",
+									"    \"product_id\": 3,",
+									"    \"rating\": 3",
+									"});",
+									"});",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\": 1,\r\n    \"product_id\": 3,\r\n    \"rating\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/review",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"review"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Review Zoe 4 estrellas",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test json response\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.eql({",
+									"    \"id\": 7,",
+									"    \"user_id\": 1,",
+									"    \"product_id\": 4,",
+									"    \"rating\": 4",
+									"});",
+									"});",
+									"",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\": 1,\r\n    \"product_id\": 4,\r\n    \"rating\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/review",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"review"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Review GLA 2023 3 estrellas",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test json response\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.eql({",
+									"    \"id\": 8,",
+									"    \"user_id\": 1,",
+									"    \"product_id\": 5,",
+									"    \"rating\": 3",
+									"});",
+									"});",
+									"",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\": 1,\r\n    \"product_id\": 5,\r\n    \"rating\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/review",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"review"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Review GLA 2023 4 estrellas",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test json response\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.eql({",
+									"    \"id\": 9,",
+									"    \"user_id\": 1,",
+									"    \"product_id\": 5,",
+									"    \"rating\": 4",
+									"});",
+									"});",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\": 1,\r\n    \"product_id\": 5,\r\n    \"rating\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/review",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"review"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Review Eclipse Cross 4 estrellas",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test json response\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.eql({",
+									"    \"id\": 10,",
+									"    \"user_id\": 1,",
+									"    \"product_id\": 6,",
+									"    \"rating\": 4",
+									"});",
+									"});",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\": 1,\r\n    \"product_id\": 6,\r\n    \"rating\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/review",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"review"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Review Eclipse Cross 5 estrellas",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test json response\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.eql({",
+									"    \"id\": 11,",
+									"    \"user_id\": 1,",
+									"    \"product_id\": 6,",
+									"    \"rating\": 5",
+									"});",
+									"});",
+									"",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\": 1,\r\n    \"product_id\": 6,\r\n    \"rating\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/review",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"review"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Review Eclipse Cross 5 estrellas",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test json response\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.eql({",
+									"    \"id\": 12,",
+									"    \"user_id\": 1,",
+									"    \"product_id\": 6,",
+									"    \"rating\": 5",
+									"});",
+									"});",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\": 1,\r\n    \"product_id\": 6,\r\n    \"rating\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/review",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"review"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Review Hatchback 5 estrellas",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test json response\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.eql({",
+									"    \"id\": 13,",
+									"    \"user_id\": 1,",
+									"    \"product_id\": 7,",
+									"    \"rating\": 5",
+									"});",
+									"});",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\": 1,\r\n    \"product_id\": 7,\r\n    \"rating\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/review",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"review"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Review Triton 2 estrellas",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test json response\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.eql({",
+									"    \"id\": 14,",
+									"    \"user_id\": 1,",
+									"    \"product_id\": 8,",
+									"    \"rating\": 2",
+									"});",
+									"});",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\": 1,\r\n    \"product_id\": 8,\r\n    \"rating\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/review",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"review"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Review Triton 3 estrellas",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test json response\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.eql({",
+									"    \"id\": 15,",
+									"    \"user_id\": 1,",
+									"    \"product_id\": 8,",
+									"    \"rating\": 3",
+									"});",
+									"});",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\": 1,\r\n    \"product_id\": 8,\r\n    \"rating\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/review",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"review"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Review Triton 3 estrellas",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test json response\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.eql({",
+									"    \"id\": 16,",
+									"    \"user_id\": 1,",
+									"    \"product_id\": 8,",
+									"    \"rating\": 3",
+									"});",
+									"});",
+									"",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\": 1,\r\n    \"product_id\": 8,\r\n    \"rating\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/review",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"review"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product GET",
+			"item": [
+				{
+					"name": "Random 8",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Json response data\", () => {",
+									"    const responseJson = pm.response.json();",
+									"    pm.expect(responseJson.length).to.eql(8);",
+									"})",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/product/random",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"product",
+								"random"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

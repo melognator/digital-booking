@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Verificar email</title>
+</head>
+<body>
+<h1>Verifica tu correo electrónico</h1>
+<p>Hola [[${user}]],</p>
+<p>Gracias por registrarte en Digital Booking. Por favor, presiona el siguiente enlace para verificar tu email:</p>
+<a th:href="@{http://pigrupo7marzo2023web.s3-website.us-east-2.amazonaws.com/user/verification/{token}(token=${token})}">Click aquí</a>
+<p>Gracias,</p>
+<p>Equipo 7 de la Camada 3</p>
+</body>
+</html>
+

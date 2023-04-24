@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "city": "Montevideo",
+        "region": "Montevideo",
+        "country": "Uruguay"
+    },
+    {
+        "id": 2,
+        "city": "Punta del Este",
+        "region": "Maldonado",
+        "country": "Uruguay"
+    },
+    {
+        "id": 3,
+        "city": "Minas",
+        "region": "Lavalleja",
+        "country": "Uruguay"
+    },
+    {
+        "id": 4,
+        "city": "Buenos Aires",
+        "region": "Buenos Aires",
+        "country": "Argentina"
+    },
+    {
+        "id": 5,
+        "city": "Córdoba",
+        "region": "Córdoba",
+        "country": "Argentina"
+    },
+    {
+        "id": 6,
+        "city": "Mendoza",
+        "region": "Mendoza",
+        "country": "Argentina"
+    }
+]

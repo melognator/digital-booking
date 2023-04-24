@@ -1,0 +1,1 @@
+ssh -i "DigitalBookingEC2.pem" ubuntu@ec2-44-200-10-150.compute-1.amazonaws.com

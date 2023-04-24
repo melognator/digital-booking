@@ -1,0 +1,424 @@
+{
+	"info": {
+		"_postman_id": "1de89d1b-0e0c-43fc-b174-843ede239a86",
+		"name": "Proyecto Integrador",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17466726"
+	},
+	"item": [
+		{
+			"name": "Categoria Deportivo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Json response data\", () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson.id).to.eql(1);",
+							"    pm.expect(responseJson.titulo).to.eql(\"Deportivo\");",
+							"    pm.expect(responseJson.descripcion).to.eql(\"Autos de alta gama\");",
+							"    pm.expect(responseJson.urlImagen).to.eql(\"urlfalse.com\");",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Deportivo\",\n    \"description\": \"12.538 autos\",\n    \"img\": \"https://toyotaassets.scene7.com/is/image/toyota/Prius_68x538_TYCK2067000H?fmt=jpeg&fit=crop&wid=767\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/category",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"category"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Categoria Económico",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Json response data\", () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson.id).to.eql(1);",
+							"    pm.expect(responseJson.titulo).to.eql(\"Deportivo\");",
+							"    pm.expect(responseJson.descripcion).to.eql(\"Autos de alta gama\");",
+							"    pm.expect(responseJson.urlImagen).to.eql(\"urlfalse.com\");",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Económico\",\n    \"description\": \"5.230 autos\",\n    \"img\": \"https://cdn.motor1.com/images/mgl/Y1B1q/s1/adios-al-kwid-por-restricciones-a-las-importaciones-renault-deja-de-vender-su-auto-mas-barato-en-argentina.webp\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/category",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"category"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Categoria Todoterreno",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Json response data\", () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson.id).to.eql(1);",
+							"    pm.expect(responseJson.titulo).to.eql(\"Deportivo\");",
+							"    pm.expect(responseJson.descripcion).to.eql(\"Autos de alta gama\");",
+							"    pm.expect(responseJson.urlImagen).to.eql(\"urlfalse.com\");",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Todoterreno\",\n    \"description\": \"9.312 autos\",\n    \"img\": \"https://www.mitsubishi-motors.com.uy/Images/PageImages/Slider/new-l200-renace-la-leyenda-mobile.jpg\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/category",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"category"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Categoria De lujo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Json response data\", () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson.id).to.eql(1);",
+							"    pm.expect(responseJson.titulo).to.eql(\"Deportivo\");",
+							"    pm.expect(responseJson.descripcion).to.eql(\"Autos de alta gama\");",
+							"    pm.expect(responseJson.urlImagen).to.eql(\"urlfalse.com\");",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"De lujo\",\n    \"description\": \"2.402 autos\",\n    \"img\": \"https://motor.elpais.com/wp-content/uploads/2022/09/2023-Mercedes-AMG-C-63-S-E-PERFORMANCE-00001.jpg\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/category",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"category"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/category",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Json response data\", () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson[0].id).to.eql(1);",
+							"    pm.expect(responseJson[0].title).to.eql(\"Deportivo\");",
+							"    pm.expect(responseJson[0].description).to.eql(\"12.538 autos\");",
+							"    pm.expect(responseJson[0].img).to.eql(\"https://toyotaassets.scene7.com/is/image/toyota/Prius_68x538_TYCK2067000H?fmt=jpeg&fit=crop&wid=767\");",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/category",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"category"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/category",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Category Deportivo has been updated\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \"id\" : \"1\",\n    \"description\" : \"Autos de alta gama\",\n    \"title\" : \"Deportivo\",\n    \"img\" : \"urlfalse.com2.0\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/category",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"category"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/category/1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Json response data\", () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson.id).to.eql(1);",
+							"    pm.expect(responseJson.title).to.eql(\"Deportivo\");",
+							"    pm.expect(responseJson.description).to.eql(\"Autos de alta gama\");",
+							"    pm.expect(responseJson.img).to.eql(\"urlfalse.com2.0\");",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/category/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"category",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/category/title/Usados",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Json response data\", () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson.title).to.eql(\"Usados\");",
+							"    pm.expect(responseJson.description).to.eql(\"Autos usados\");",
+							"    pm.expect(responseJson.img).to.eql(\"urlfalse.com\");",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/category/title/Usados",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"category",
+						"title",
+						"Usados"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/category/1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"The category Deportivo has been eliminate\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/category/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"category",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/category/title/Deportivo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"The category Usados has been eliminate\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/category/title/Usados",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"category",
+						"title",
+						"Usados"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.test(\"Status code is 200\", function () {",
+					"    pm.response.to.have.status(200);",
+					"});"
+				]
+			}
+		}
+	]
+}
