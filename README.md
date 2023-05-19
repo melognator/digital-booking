@@ -1,7 +1,7 @@
 # Digital Booking
 
-Acceso al sitio: http://pigrupo7marzo2023web.s3-website.us-east-2.amazonaws.com  
-Acceso a la documentación de la API: http://18.188.163.166/swagger-ui/index.html  
+Acceso al sitio: http://digital-booking.s3-website-us-east-1.amazonaws.com  
+Acceso a la documentación de la API: http://3.84.240.62/swagger-ui/index.html  
 
 ![Captura de pantalla del sitio](https://melogno.lol/assets/img/digitalbooking.webp "DB Desktop")
 
